@@ -16,6 +16,7 @@ namespace Core.DTOs
         public int PageCount { get; set; }
 
         public int ProductsCount { get; set; }
+        public double itemsPerPage { get; set; }
     }
 }
 

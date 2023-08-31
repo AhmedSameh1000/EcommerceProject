@@ -10,8 +10,10 @@ namespace Api.DTOs
         public decimal Price { get; set; }
         public string URL { get; set; }
         public virtual string productType { get; set; }
+        public virtual int productTypeId { get; set; }
 
         public virtual string ProductBrand { get; set; }
+        public virtual int ProductBrandId { get; set; }
 
 
     }

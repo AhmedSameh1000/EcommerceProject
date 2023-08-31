@@ -1,0 +1,7 @@
+.light2:hover a{
+color: white !important;
+}
+.pointer:hover a,
+.pointer:hover i{
+cursor: pointer;
+}

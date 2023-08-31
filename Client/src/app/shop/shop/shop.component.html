@@ -1,0 +1,107 @@
+<div class="mt-3 row container-fluid justify-content-between">
+  <div class="col-12 col-lg-3 mb-2">
+    <div class="mb-5">
+      <ul
+        class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px"
+        data-bs-theme="light"
+      >
+        <li>
+          <a
+            class="btn btn-primary w-100 text-start fs-3 rounded-2 active"
+            href="#"
+            >Brands</a
+          >
+        </li>
+        <li>
+          <a
+            [ngClass]="{ active: AllParams.brandIdSelected == Brand.id }"
+            (click)="OnBrandSelected(Brand.id)"
+            class="mt-2 dropdown-item rounded-2 pointer"
+            *ngFor="let Brand of Brands"
+            >{{ Brand.name }}</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div>
+      <ul
+        class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px"
+        data-bs-theme="light"
+      >
+        <li>
+          <a
+            class="btn btn-primary w-100 text-start rounded-2 active fs-3"
+            href="#"
+            >Types</a
+          >
+        </li>
+        <li>
+          <a
+            [ngClass]="{ active: AllParams.TypeIdSelected == Type.id }"
+            (click)="OnTypeSelected(Type.id)"
+            class="mt-2 dropdown-item rounded-2 pointer"
+            *ngFor="let Type of Types"
+            >{{ Type.name }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-12 col-lg-8 gap-2">
+    <div class="row mb-4 mt-3" *ngIf="Pagination">
+      <h4 *ngIf="Pagination.products.length > 0" class="col">
+        Showing {{ Pagination.currentPage }} of {{ Pagination.pageCount }}
+      </h4>
+      <div class="h4" *ngIf="Pagination.products.length <= 0">
+        there are no result match your search
+      </div>
+      <div class="input-group col">
+        <input #inp type="text" class="form-control" placeholder="Search..." />
+        <div class="input-group-append">
+          <button (click)="OnSearch(inp)" class="btn btn-primary" type="button">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      "
+      class="col-12 col-lg-8 gap-2"
+      *ngIf="Pagination"
+    >
+      <div class="shadow" *ngFor="let product of Pagination.products">
+        <div class="card shadow-sm h-100">
+          <img src="{{ product.url }}" alt="{{ product.name }}" />
+          <div class="card-body d-flex flex-column h-100">
+            <a href="" class="text-decoration-none">
+              <h6 class="text-uppercase">{{ product.name }}</h6>
+            </a>
+            <span class="mb-2">{{ product.price | currency }}</span>
+            <div class="btn-group mt-auto">
+              <button class="btn btn-outline-success">Add To Cart</button>
+              <button class="btn btn-outline-success">View</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3" *ngIf="Pagination">
+      <pagination
+        [boundaryLinks]="true"
+        [itemsPerPage]="Pagination.itemsPerPage"
+        [totalItems]="Pagination.productsCount"
+        previousText="&lsaquo;"
+        (pageChanged)="change($event)"
+        nextText="&rsaquo;"
+        firstText="&laquo;"
+        lastText="&raquo;"
+      >
+      </pagination>
+    </div>
+  </div>
+</div>

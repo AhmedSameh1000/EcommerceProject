@@ -1,0 +1,12 @@
+.pointer{
+    cursor: pointer;
+}
+img{
+    height: 200% !important;
+}
+
+
+.pad:hover{
+    margin-left: 20px;
+    transition: 0.5s;
+}

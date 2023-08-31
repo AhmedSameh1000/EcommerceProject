@@ -9,5 +9,10 @@ namespace Core.DTOs
     public class PaginationParams
     {
         public int? page { get; set; } = 1;
+        public int? BrandId { get; set; }   
+
+        public int? TypeId { get; set; }
+        public string? Search { get; set; }
+
     }
 }

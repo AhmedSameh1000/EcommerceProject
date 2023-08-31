@@ -24,10 +24,10 @@ namespace Api.Controllers
             this.productRepository = productRepository;
             this.mapper = mapper;
         }
-        [HttpGet]
+        [HttpGet("Products")]
         public async Task<IActionResult> GetProducts([FromQuery] PaginationParams? param)
         {
-            var ProductPagination = await productRepository.GetProductsAsync(param.page.Value);
+            var ProductPagination = await productRepository.GetProductsAsync(param);
            
             return Ok(ProductPagination);
         }

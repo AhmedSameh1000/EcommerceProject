@@ -1,4 +1,5 @@
 ﻿using Api.DTOs;
+using AutoMapper;
 using Core.DTOs;
 using Core.Interfaces;
 using Core.Models;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Net.Http;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace InfraStructure.Repositories
 {
@@ -16,16 +18,19 @@ namespace InfraStructure.Repositories
         private readonly AppDbContext Context;
         private readonly IWebHostEnvironment _host;
         private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly IMapper mapper;
 
         public ProductRepository(
             AppDbContext Context,
             IWebHostEnvironment host,
-            IHttpContextAccessor httpContextAccessor
+            IHttpContextAccessor httpContextAccessor,
+              IMapper mapper
            )
         {
             this.Context = Context;
             _host = host;
             this.httpContextAccessor = httpContextAccessor;
+            this.mapper = mapper;
         }
 
         public async Task<Product> CreateProductAsync(ProductToCreateDTO productTo)
@@ -80,37 +85,45 @@ namespace InfraStructure.Repositories
             return await Context.ProductBrands.ToListAsync();
         }
 
-        public async Task<ProductPaginationResponse> GetProductsAsync(int page=1)
+        public async Task<ProductPaginationResponse> GetProductsAsync(PaginationParams @params)
         {
-            var PageResult = 5f;
-            var PageCount = Math.Ceiling(Context.Products.Count() / PageResult);
+            var _itemsPerPage = 6f;
+            var PageCount = Math.Ceiling(Context.Products.Count() / _itemsPerPage);
 
 
 
-            var Products= await Context.Products
-                .Include(p=>p.productType)
-                .Include(p=>p.ProductBrand)
-                .Skip((page-1)*(int)PageResult)
-                .Take((int)PageResult)
-                .Select(p=>new ProductToReturnDto()
-                {
-                    Description = p.Description,    
-                    Id = p.Id,
-                    Name = p.Name,
-                    Price = p.Price,
-                    URL = p.URL,
-                    ProductBrand= p.ProductBrand.Name,
-                    productType = p.productType.Name
-                })
-                .ToListAsync();
+            var Products = Context.Products
+                .Include(p => p.productType)
+                .Include(p => p.ProductBrand)
+                .Skip((@params.page.Value - 1) * (int)_itemsPerPage)
+                .Take((int)_itemsPerPage);
+              
+            if (@params.TypeId.HasValue)
+            {
+                Products =Products.Where(p => p.ProductTypeId == @params.TypeId.Value);
+            }     
+            if (@params.BrandId.HasValue)
+            {
+                Products = Products.Where(p => p.ProductBrandId == @params.BrandId.Value);
+            } 
+            if (!string.IsNullOrEmpty(@params.Search))
+            {
+                Products = Products.Where(p => p.Name.ToLower().Contains(@params.Search.ToLower()));
+            }
 
+            var AllProducts = await Products.ToListAsync();
+
+
+
+            var ProductToReturn = mapper.Map<List<ProductToReturnDto>>(AllProducts);
 
             var ProductResponse = new ProductPaginationResponse
             {
-                products = Products,
-                currentPage = page,
+                products = ProductToReturn,
                 PageCount = (int)PageCount,
+                itemsPerPage = _itemsPerPage,
                 ProductsCount = Context.Products.Count(),
+                currentPage=@params.page.Value               
             };
             return ProductResponse;
         }
