@@ -5,3 +5,11 @@ color: white !important;
 .pointer:hover i{
 cursor: pointer;
 }
+a{
+    text-decoration: none;
+    color: #343a40;
+    &.active{
+        color: orange;
+    }
+}
+    

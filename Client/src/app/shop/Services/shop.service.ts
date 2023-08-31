@@ -30,10 +30,14 @@ export class ShopService {
    
     return this.Http.get<Pagination<Product[]>>(environment.baseUrl+"Product/Products",{params:params})
   }
-  GetBrands():Observable<Brand[]>{
+  GetBrands(){
     return this.Http.get<Brand[]>(environment.baseUrl+"Product/Brands")
   }
-  GetTypes():Observable<type[]>{
+  GetTypes(){
     return this.Http.get<type[]>(environment.baseUrl+"Product/Types")
   }
+  GetProduct(id:number){
+    return this.Http.get<Product>(environment.baseUrl+`Product/${id}`)
+  }
 }
+

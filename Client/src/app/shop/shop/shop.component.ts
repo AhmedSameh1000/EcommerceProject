@@ -42,8 +42,7 @@ export class ShopComponent implements OnInit {
   loadBrands(){
     this.ShopServic.GetBrands().subscribe({
       next:(res)=>{
-        this.Brands=[{id:0,name:"All"},...res]
-        
+        this.Brands=[{id:0,name:"All"},...res]       
       }
     })
   }

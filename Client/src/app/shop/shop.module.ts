@@ -6,18 +6,22 @@ import { ShopComponent } from './shop/shop.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [
-    ShopComponent
+    ShopComponent,
+    ProductDetailsComponent
   ],
   imports: [
     CommonModule,
     ShopRoutingModule,
     BsDropdownModule.forRoot(),
     SharedModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   exports:[ShopComponent]
 })

@@ -1,8 +1,9 @@
 <nav class="shadow navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand">
       <img
-        style="border-radius: 30px"
+        routerLink="/"
+        style="border-radius: 30px; cursor: pointer"
         width="200px"
         height="100px"
         src="../../assets/Images/images.png"
@@ -26,13 +27,18 @@
     >
       <ul class="navbar-nav gap-2">
         <li class="nav-item pointer">
-          <a class="nav-link active" aria-current="page">Home</a>
+          <a
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLink="/"
+            >Home</a
+          >
         </li>
         <li class="nav-item pointer">
-          <a class="nav-link">Shop</a>
+          <a routerLinkActive="active" routerLink="/Products">Shop</a>
         </li>
         <li class="nav-item pointer">
-          <a class="nav-link">Contact</a>
+          <a routerLinkActive="active" routerLink="/Contact">Contact</a>
         </li>
       </ul>
       <ul class="navbar-nav gap-3">

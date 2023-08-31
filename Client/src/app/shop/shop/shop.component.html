@@ -84,7 +84,12 @@
             <span class="mb-2">{{ product.price | currency }}</span>
             <div class="btn-group mt-auto">
               <button class="btn btn-outline-success">Add To Cart</button>
-              <button class="btn btn-outline-success">View</button>
+              <button
+                class="btn btn-outline-success"
+                routerLink="/Products/{{ product.id }}"
+              >
+                View
+              </button>
             </div>
           </div>
         </div>

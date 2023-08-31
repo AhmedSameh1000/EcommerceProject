@@ -1,0 +1,37 @@
+<div class="row mt-2" *ngIf="Product">
+  <div class="border border-2 col-12 col-lg-6 p-3 rounded-2">
+    <img src="{{ Product.url }}" alt="{{ Product.name }}" class="w-100" />
+  </div>
+  <div
+    class="border border-3 b col-12 col-lg-6 p-3 rounded-2 position-relative"
+  >
+    <button
+      class="w-25 btn btn-secondary position-absolute rounded-0 top-0 end-0"
+    >
+      {{ Product.productType }}
+    </button>
+    <button
+      class="w-25 btn btn-secondary position-absolute rounded-0 bottom-0 end-0"
+    >
+      {{ Product.productBrand }} Brand
+    </button>
+    <div class="h1">{{ Product.name }}</div>
+    <p class="h3 mb-4">{{ Product.price | currency }}</p>
+    <div class="d-flex">
+      <i
+        class="fa-solid fa-circle-minus text-warning me-2"
+        style="cursor: pointer; font-size: 2em"
+      ></i>
+      <span class="fw-bold" style="font-size: 1.5em">2</span>
+      <i
+        class="fa-solid fa-plus-circle text-warning ms-2"
+        style="cursor: pointer; font-size: 2em"
+      ></i>
+      <button class="btn btn-outline-secondary ms-4">Add To Cart</button>
+    </div>
+    <div class="mt-4">
+      <h4>Description</h4>
+      <p>{{ Product.description }}</p>
+    </div>
+  </div>
+</div>
