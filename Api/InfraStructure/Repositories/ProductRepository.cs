@@ -80,6 +80,16 @@ namespace InfraStructure.Repositories
             await Context.SaveChangesAsync();
         }
 
+        public async Task<List<ProductImages>> GetImagesForSomeProducts()
+        {
+            var ProductsCount=await Context.Products.CountAsync();
+            var Count=ProductsCount>=10?10:ProductsCount;
+
+            var Images=await Context.Products.Take(Count).ToListAsync();
+            var ImagesToReturn=mapper.Map<List<ProductImages>>(Images);
+            return ImagesToReturn;
+        }
+
         public async Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync()
         {
             return await Context.ProductBrands.ToListAsync();

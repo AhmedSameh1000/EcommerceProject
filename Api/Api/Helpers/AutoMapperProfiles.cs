@@ -1,5 +1,6 @@
 ﻿using Api.DTOs;
 using AutoMapper;
+using Core.DTOs;
 using Core.Models;
 
 namespace Api.AutoMapperProfile
@@ -11,6 +12,8 @@ namespace Api.AutoMapperProfile
             CreateMap<Product, ProductToReturnDto>()
                 .ForMember(dest => dest.productType, opt => { opt.MapFrom(src => src.productType.Name); })
                 .ForMember(dest => dest.ProductBrand, opt => { opt.MapFrom(src => src.ProductBrand.Name); });
+
+            CreateMap<Product, ProductImages>();
         }
     }
 }

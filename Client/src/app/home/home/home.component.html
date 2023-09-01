@@ -1,1 +1,22 @@
-<p>home works!</p>
+<carousel class="car" [interval]="0" *ngIf="ProductsImages">
+  <slide
+    *ngFor="let item of ProductsImages"
+    class="container p-0 position-relative pos"
+    style="height: 70vh"
+  >
+    <img
+      style="max-width: 100%"
+      height="100%"
+      src="{{ item.url }}"
+      alt="first slide"
+    />
+    <div
+      class="w-100 gap-2 d-flex position-absolute done justify-content-center m-auto"
+    >
+      <button class="btn btn-primary">Cart</button>
+      <button class="btn btn-primary" routerLink="Products/{{ item.id }}">
+        View
+      </button>
+    </div>
+  </slide>
+</carousel>

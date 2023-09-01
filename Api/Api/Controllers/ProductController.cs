@@ -37,7 +37,12 @@ namespace Api.Controllers
             await productRepository.DeleteProductAsync(id);
             return Ok();
         }
-
+        [HttpGet("ProductsImages")] 
+        public async Task<IActionResult> GetProductsImages()
+        {
+            var Images=await productRepository.GetImagesForSomeProducts();
+            return Ok(Images);
+        }
 
         [HttpPost("CreateProductAsync")]
         public async Task<IActionResult> CreateProduct([FromForm] ProductToCreateDTO productdto)

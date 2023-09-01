@@ -3,9 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 let _shardModulese=[
-  PaginationModule.forRoot()
+  PaginationModule.forRoot(),
+  ToastrModule.forRoot({
+    closeButton:true,
+    progressBar:true,
+    positionClass: 'toast-bottom-right',
+  }), 
+  NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
+  CarouselModule.forRoot()
 ]
 
 @NgModule({
@@ -13,7 +23,8 @@ let _shardModulese=[
   imports: [
     CommonModule,
     SharedRoutingModule,
-    _shardModulese
+    _shardModulese,
+    
   ],
   exports:[_shardModulese]
 

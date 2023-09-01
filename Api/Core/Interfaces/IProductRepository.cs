@@ -11,6 +11,9 @@ namespace Core.Interfaces
         Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync();
         Task<Product> CreateProductAsync(ProductToCreateDTO createDTO);
         Task DeleteProductAsync(int id);
+
+
+        Task<List<ProductImages>> GetImagesForSomeProducts();
     
     }
 }

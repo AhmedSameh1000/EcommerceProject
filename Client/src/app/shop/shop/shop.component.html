@@ -74,7 +74,10 @@
       class="col-12 col-lg-8 gap-2"
       *ngIf="Pagination"
     >
-      <div class="shadow" *ngFor="let product of Pagination.products">
+      <div
+        class="myimg shadow cont"
+        *ngFor="let product of Pagination.products"
+      >
         <div class="card shadow-sm h-100">
           <img src="{{ product.url }}" alt="{{ product.name }}" />
           <div class="card-body d-flex flex-column h-100">
@@ -82,11 +85,14 @@
               <h6 class="text-uppercase">{{ product.name }}</h6>
             </a>
             <span class="mb-2">{{ product.price | currency }}</span>
-            <div class="btn-group mt-auto">
-              <button class="btn btn-outline-success">Add To Cart</button>
+
+            <div
+              class="done gap-3 start-0 w-100 d-flex justify-content-center position-absolute"
+            >
+              <button class="btn btn-primary">Cart</button>
               <button
-                class="btn btn-outline-success"
                 routerLink="/Products/{{ product.id }}"
+                class="btn btn-primary"
               >
                 View
               </button>

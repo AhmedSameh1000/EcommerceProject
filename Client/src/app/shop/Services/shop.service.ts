@@ -39,5 +39,8 @@ export class ShopService {
   GetProduct(id:number){
     return this.Http.get<Product>(environment.baseUrl+`Product/${id}`)
   }
+  GetProductsImages(){
+    return this.Http.get<Product[]>(environment.baseUrl+"Product/ProductsImages")
+  }
 }
 
