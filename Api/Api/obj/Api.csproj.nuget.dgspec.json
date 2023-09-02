@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\Api.csproj": {}
+    "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\Api.csproj": {
+    "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\Api.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\Api.csproj",
         "projectName": "Api",
-        "projectPath": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\Api.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\Api.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,11 +29,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Core\\Core.csproj"
+              "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Core\\Core.csproj"
               },
-              "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\InfraStructure\\InfraStructure.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\InfraStructure\\InfraStructure.csproj"
+              "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\InfraStructure\\InfraStructure.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\InfraStructure\\InfraStructure.csproj"
               }
             }
           }
@@ -51,6 +51,14 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[12.0.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.10, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
@@ -79,6 +87,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.32.2, )"
             }
           },
           "imports": [
@@ -104,14 +116,14 @@
         }
       }
     },
-    "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Core\\Core.csproj": {
+    "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Core\\Core.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Core\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -143,6 +155,14 @@
             "Microsoft.AspNetCore.Http.Features": {
               "target": "Package",
               "version": "[5.0.17, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.32.2, )"
             }
           },
           "imports": [
@@ -165,14 +185,14 @@
         }
       }
     },
-    "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\InfraStructure\\InfraStructure.csproj": {
+    "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\InfraStructure\\InfraStructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\InfraStructure\\InfraStructure.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\InfraStructure\\InfraStructure.csproj",
         "projectName": "InfraStructure",
-        "projectPath": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\InfraStructure\\InfraStructure.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\InfraStructure\\InfraStructure.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\InfraStructure\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\InfraStructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -189,8 +209,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Core\\Core.csproj"
+              "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Core\\Core.csproj"
               }
             }
           }
@@ -212,6 +232,10 @@
             "Microsoft.AspNetCore.Http.Abstractions": {
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

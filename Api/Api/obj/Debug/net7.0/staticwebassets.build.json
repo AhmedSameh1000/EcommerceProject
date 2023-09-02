@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "arAdWp2LttGRgoocvmSF0ake6Yv4cUrbkUSiASnlH+w=",
+  "Hash": "NwoF7O/JjduCXRy1o7UUPiHyfA+pWjsWt62bDj2WFjA=",
   "Source": "Api",
   "BasePath": "_content/Api",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Api\\wwwroot",
       "Source": "Api",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\",
       "BasePath": "_content/Api",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\16974dde-6461-4901-8a25-58483db61729.jpg",
+      "Identity": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\16974dde-6461-4901-8a25-58483db61729.jpg",
       "SourceId": "Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\",
       "BasePath": "_content/Api",
       "RelativePath": "Images/16974dde-6461-4901-8a25-58483db61729.jpg",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\16974dde-6461-4901-8a25-58483db61729.jpg"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\380536e6-c153-4312-a50f-8f26623f5d9b.jpg",
+      "Identity": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\380536e6-c153-4312-a50f-8f26623f5d9b.jpg",
       "SourceId": "Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\",
       "BasePath": "_content/Api",
       "RelativePath": "Images/380536e6-c153-4312-a50f-8f26623f5d9b.jpg",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\380536e6-c153-4312-a50f-8f26623f5d9b.jpg"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\87555af2-aa4a-4f16-aea3-0c57953bc0b7.jpg",
+      "Identity": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\87555af2-aa4a-4f16-aea3-0c57953bc0b7.jpg",
       "SourceId": "Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\",
       "BasePath": "_content/Api",
       "RelativePath": "Images/87555af2-aa4a-4f16-aea3-0c57953bc0b7.jpg",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\87555af2-aa4a-4f16-aea3-0c57953bc0b7.jpg"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\d046e8ae-8e70-4855-b204-1d8716425a56.jpg",
+      "Identity": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\d046e8ae-8e70-4855-b204-1d8716425a56.jpg",
       "SourceId": "Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\",
       "BasePath": "_content/Api",
       "RelativePath": "Images/d046e8ae-8e70-4855-b204-1d8716425a56.jpg",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\d046e8ae-8e70-4855-b204-1d8716425a56.jpg"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\e00d9579-5273-417b-a159-dcebf3abcbf5.jpg",
+      "Identity": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\e00d9579-5273-417b-a159-dcebf3abcbf5.jpg",
       "SourceId": "Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\",
       "BasePath": "_content/Api",
       "RelativePath": "Images/e00d9579-5273-417b-a159-dcebf3abcbf5.jpg",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\e00d9579-5273-417b-a159-dcebf3abcbf5.jpg"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\f46c9806-961c-4064-b29b-127b3309f30e.jpg",
+      "Identity": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\f46c9806-961c-4064-b29b-127b3309f30e.jpg",
       "SourceId": "Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\EcommerceProject\\Api\\Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\",
       "BasePath": "_content/Api",
       "RelativePath": "Images/f46c9806-961c-4064-b29b-127b3309f30e.jpg",
       "AssetKind": "All",
