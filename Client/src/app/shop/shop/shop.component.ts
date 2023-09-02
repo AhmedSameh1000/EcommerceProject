@@ -32,7 +32,7 @@ export class ShopComponent implements OnInit {
     this.ShopServic.GetProducts(this.AllParams).subscribe({
       next:(res)=>{
         this.Pagination=res;
-        console.log(res)
+     
       },
       error:(e)=>console.log(e)
     })

@@ -25,7 +25,7 @@
       class="collapse navbar-collapse d-lg-flex flex-column flex-md-row justify-content-between fs-3"
       id="navbarSupportedContent"
     >
-      <ul class="navbar-nav gap-2">
+      <ul class="navbar-nav gap-4">
         <li class="nav-item pointer">
           <a
             routerLinkActive="active"
@@ -36,6 +36,13 @@
         </li>
         <li class="nav-item pointer">
           <a routerLinkActive="active" routerLink="/Products">Shop</a>
+        </li>
+        <li
+          *ngIf="AuthService.isAdmin()"
+          routerLink="/ProductsList"
+          class="nav-item pointer"
+        >
+          <a routerLinkActive="active">List</a>
         </li>
         <li class="nav-item pointer">
           <a routerLinkActive="active" routerLink="/Contact">Contact</a>

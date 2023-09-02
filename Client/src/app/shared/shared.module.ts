@@ -15,7 +15,7 @@ let _shardModulese=[
     positionClass: 'toast-bottom-right',
   }), 
   NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
-  CarouselModule.forRoot()
+  CarouselModule.forRoot(),
 ]
 
 @NgModule({

@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
-import { Product } from './shared/Models/Product';
-import { Pagination } from './shared/Models/Paging';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
+import { AuthService } from './auth/Auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,21 +10,12 @@ import { Pagination } from './shared/Models/Paging';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  constructor(private Http:HttpClient){
+  constructor(private authservices:AuthService){
 
   }
-  Pagination!:Pagination<Product[]>
   ngOnInit(): void {
-    // this.Http.get<Pagination<Product[]>>("https://localhost:7235/api/Product/Products")
-    // .subscribe({
-    //   next:(res:Pagination<Product[]>)=>{
-    //     this.Pagination=res  
-    //     console.log(res) 
-    //   },
-    //   complete:()=>{
-    //     console.log("Done")
-    //   }
-    // })
+
   }
+
   title = 'Client';
 }

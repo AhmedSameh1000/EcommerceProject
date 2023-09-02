@@ -11,6 +11,7 @@ import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { AuthModule } from './auth/auth.module';
+import { AdminModule } from './admin/admin.module';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AuthModule } from './auth/auth.module';
     ShopModule,
     HomeModule,
     SharedModule,
-AuthModule
+    AuthModule,
+    AdminModule
   ],
   providers: [
     {

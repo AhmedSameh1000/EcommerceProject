@@ -44,12 +44,9 @@ export class RegisterComponent implements OnInit{
       },error:(eror)=>{
         this.Toaster.error(eror.error)
        this.emailAlreadyRegister=eror.error
-
       }
-  
     })
   }
-
   submited = false;
   Onsubmit() 
   {

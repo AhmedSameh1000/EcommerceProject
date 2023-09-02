@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Token } from '@angular/compiler';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  JWTHealper = new JwtHelperService();
   constructor(private Http:HttpClient) { }
 
 
@@ -20,11 +21,32 @@ export class AuthService {
   IsLogIn(){
     if(localStorage.getItem('token'))
     return true;
-
     return false;
+  }
+
+  GetToken(){
+    if(!this.IsLogIn()){
+      return
+    }
+    var token=localStorage.getItem("token");
+    return token;
   }
   LogOut(){
     localStorage.removeItem("token")
+  }
+
+  isAdmin(){
+    if(!this.IsLogIn())
+    return;
+    var token=this.GetToken();
+    var TokeneData=this.JWTHealper.decodeToken(token!)
+    if(TokeneData.roles=='Admin'){
+      return true
+    }
+    else  {
+      return false;
+    }
+    
   }
 
 }
