@@ -10,6 +10,7 @@ import { ShopModule } from './shop/shop.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     ShopModule,
     HomeModule,
     SharedModule,
-
+AuthModule
   ],
   providers: [
     {

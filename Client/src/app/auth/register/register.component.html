@@ -1,0 +1,156 @@
+<div class="mt-5 d-flex justify-content-center">
+  <form [formGroup]="RegisterFormData" (ngSubmit)="Onsubmit()" class="form">
+    <p class="title">Register</p>
+    <p class="message">Signup now and get full access to our app.</p>
+    <div class="flex">
+      <label for="nameone">
+        <input
+          formControlName="nameone"
+          [ngClass]="{
+            'is-invalid':
+              submited && RegisterFormData.controls['FirstName'].errors
+          }"
+          formControlName="FirstName"
+          class="input form-control"
+          id="nameone"
+          required
+        />
+        <span>Firstname</span>
+      </label>
+
+      <label for="LastName">
+        <input
+          formControlName="LastName"
+          [ngClass]="{
+            'is-invalid':
+              submited && RegisterFormData.controls['LastName'].errors
+          }"
+          formControlName="LastName"
+          class="input form-control"
+          id="LastName"
+          required
+        />
+        <span>Lastname</span>
+      </label>
+    </div>
+
+    <label for="email">
+      <input
+        formControlName="email"
+        [ngClass]="{
+          'is-invalid': submited && RegisterFormData.controls['email'].errors
+        }"
+        formControlName="email"
+        class="input form-control"
+        id="email"
+        required
+      />
+      <span>Email</span>
+    </label>
+
+    <div
+      *ngIf="submited && RegisterFormData.controls['email'].errors"
+      class="text text-danger"
+    >
+      <div
+        *ngIf="
+  submited && RegisterFormData.controls['email'].errors?.['required']"
+      >
+        email is Required
+      </div>
+
+      <div
+        *ngIf="
+  submited && RegisterFormData.controls['email'].errors?.['email']"
+      >
+        email is Not Valid
+      </div>
+    </div>
+    <div *ngIf="emailAlreadyRegister">
+      {{ emailAlreadyRegister }}
+    </div>
+    <label for="password">
+      <input
+        #inppass
+        formControlName="password"
+        [ngClass]="{
+          'is-invalid': submited && RegisterFormData.controls['password'].errors
+        }"
+        class="input form-control"
+        id="password"
+        type="password"
+        placeholder=""
+        required=""
+      />
+      <span>Password</span>
+    </label>
+    <div
+      *ngIf="submited && RegisterFormData.controls['password'].errors"
+      class="text text-danger"
+    >
+      <div
+        *ngIf="
+submited && RegisterFormData.controls['password'].errors?.['required']"
+      >
+        password is Required
+      </div>
+
+      <div
+        *ngIf="
+submited && RegisterFormData.controls['password'].errors?.['minlength']"
+      >
+        password length should be more than 5
+      </div>
+    </div>
+
+    <label for="Confirmpassword">
+      <input
+        #inp2pass
+        formControlName="Confirmpassword"
+        [ngClass]="{
+          'is-invalid':
+            (submited && RegisterFormData.controls['Confirmpassword'].errors) ||
+            inppass.value != inp2pass.value
+        }"
+        class="input form-control"
+        id="Confirmpassword"
+        type="password"
+        required
+      />
+      <span>Confirm password</span>
+    </label>
+    <div
+      *ngIf="submited && RegisterFormData.controls['Confirmpassword'].errors"
+      class="text text-danger"
+    >
+      <div
+        *ngIf="
+submited && RegisterFormData.controls['Confirmpassword'].errors?.['required']"
+      >
+        Confirm password is Required
+      </div>
+
+      <div
+        *ngIf="
+submited && RegisterFormData.controls['Confirmpassword'].errors?.['minlength']"
+      >
+        Confirm password length should be more than 5
+      </div>
+    </div>
+
+    <div
+      *ngIf="
+        inp2pass.value != inppass.value &&
+        submited &&
+        !RegisterFormData.controls['Confirmpassword'].errors
+      "
+    >
+      Confirm password doesnt match password
+    </div>
+
+    <button (click)="Register()" class="submit">Submit</button>
+    <p class="signin">
+      Already have an acount ? <a routerLink="/LogIn">Signin</a>
+    </p>
+  </form>
+</div>

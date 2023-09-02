@@ -2,7 +2,6 @@ using Core.Interfaces;
 using InfraStructure.Data;
 using Microsoft.EntityFrameworkCore;
 using InfraStructure.Repositories;
-using Microsoft.AspNetCore.Hosting;
 using Api.AutoMapperProfile;
 using Api.MiddleWare;
 using Api.Helpers;
@@ -35,7 +34,6 @@ builder.Services.AddIdentity<User, IdentityRole>(opt =>
     opt.Password.RequireNonAlphanumeric = false; // Disable the requirement for special characters
 })
     .AddEntityFrameworkStores<AppDbContext>();
-
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -56,8 +54,6 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Corspolicy", policy =>
@@ -71,7 +67,6 @@ builder.Services.AddScoped<IProductRepository,ProductRepository>();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IInitializer, Initializer>();
-
 var app = builder.Build();
 app.UseStaticFiles();
 // Configure the HTTP request pipeline.

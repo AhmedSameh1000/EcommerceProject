@@ -45,11 +45,29 @@
         <li class="nav-item m-lg-auto fs-1 pointer">
           <i class="fa-solid fa-cart-shopping"></i>
         </li>
-        <li class="light2 fs-3 nav-item btn btn-outline-primary">
+        <li
+          *ngIf="!AuthService.IsLogIn()"
+          routerLink="LogIn"
+          class="light2 fs-3 nav-item btn btn-outline-success"
+        >
           <a class="nav-link">Login</a>
         </li>
-        <li class="light2 fs-3 nav-item btn btn-outline-secondary">
+
+        <li
+          *ngIf="!AuthService.IsLogIn()"
+          routerLink="Register"
+          class="light2 fs-3 nav-item btn btn-outline-primary"
+        >
           <a class="nav-link">SignUp</a>
+        </li>
+
+        <li
+          (click)="AuthService.LogOut()"
+          *ngIf="AuthService.IsLogIn()"
+          routerLink="/"
+          class="light2 fs-3 nav-item btn btn-outline-secondary"
+        >
+          <a class="nav-link">LogOut</a>
         </li>
       </ul>
     </div>

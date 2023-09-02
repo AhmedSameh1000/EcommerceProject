@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule),
   },
   {
+    path: '',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+  },
+  {
     path:'**',redirectTo:'',pathMatch:"full"
   }
 
