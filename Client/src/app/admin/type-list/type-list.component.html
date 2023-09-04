@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <button class="btn btn-primary" (click)="OpenDialog()">
+    Create New Type
+  </button>
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr class="text-center">
+        <th scope="col">id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="Types">
+      <tr class="text-center" *ngFor="let Type of Types" #Div>
+        <td>{{ Type.id }}</td>
+        <td>{{ Type.name }}</td>
+        <td class="d-flex justify-content-center gap-3">
+          <button class="btn btn-danger" (click)="Delete(Type.id, Div)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

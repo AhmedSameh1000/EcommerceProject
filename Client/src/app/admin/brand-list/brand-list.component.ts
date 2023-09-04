@@ -31,7 +31,9 @@ export class BrandListComponent implements OnInit {
 
         Dialogref.afterClosed().subscribe({
           next:(res)=>{
-            this.Brands.push(res)
+            if(res != null){
+              this.Brands.push(res)
+            }
           }
         })
       }
