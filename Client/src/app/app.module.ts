@@ -28,8 +28,10 @@ import { AdminModule } from './admin/admin.module';
     HomeModule,
     SharedModule,
     AuthModule,
-    AdminModule
+    AdminModule,
   ],
+
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

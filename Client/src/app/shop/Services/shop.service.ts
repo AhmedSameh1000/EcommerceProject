@@ -42,5 +42,11 @@ export class ShopService {
   GetProductsImages(){
     return this.Http.get<Product[]>(environment.baseUrl+"Product/ProductsImages")
   }
+  CreateProduct(Prodcut:any){
+  return this.Http.post(environment.baseUrl+"Product/CreateProductAsync",Prodcut)
+  }
+  DeleteProduct(id:number){
+  return  this.Http.delete(environment.baseUrl+"Product/DeleteProductAsync/"+id)
+  }
 }
 

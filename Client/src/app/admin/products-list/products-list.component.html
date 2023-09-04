@@ -1,22 +1,26 @@
-<div>
-  <button class="btn btn-primary">Create new Product</button>
+<div class="container-fluid">
+  <button class="btn btn-primary" (click)="OpenDialog()">
+    Create New Product
+  </button>
   <table class="table table-dark table-hover" *ngIf="Pagination">
     <thead>
       <tr class="text-center">
         <th scope="col">Name</th>
+        <th scope="col">Price</th>
         <th scope="col">Brand</th>
         <th scope="col">Type</th>
-        <th>Actions</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
-    <tbody class="text-center" *ngFor="let Product of Pagination.products">
-      <tr>
+    <tbody>
+      <tr class="text-center" *ngFor="let Product of Pagination.products">
         <td>{{ Product.name }}</td>
+        <td>{{ Product.price }}</td>
         <td>{{ Product.productBrand }}</td>
         <td>{{ Product.productType }}</td>
-        <td class="d-flex justify-content-center gap-2">
+        <td class="d-flex justify-content-center gap-3">
           <button
-            class="btn btn-success"
+            class="btn btn-primary"
             routerLink="/Products/{{ Product.id }}"
           >
             Show
@@ -26,17 +30,17 @@
       </tr>
     </tbody>
   </table>
-  <div class="d-flex justify-content-center mt-3" *ngIf="Pagination">
-    <pagination
-      [boundaryLinks]="true"
-      [itemsPerPage]="Pagination.itemsPerPage"
-      [totalItems]="Pagination.productsCount"
-      previousText="&lsaquo;"
-      (pageChanged)="change($event)"
-      nextText="&rsaquo;"
-      firstText="&laquo;"
-      lastText="&raquo;"
-    >
-    </pagination>
-  </div>
+</div>
+<div class="d-flex justify-content-center mt-3" *ngIf="Pagination">
+  <pagination
+    [boundaryLinks]="true"
+    [itemsPerPage]="Pagination.itemsPerPage"
+    [totalItems]="Pagination.productsCount"
+    previousText="&lsaquo;"
+    (pageChanged)="change($event)"
+    nextText="&rsaquo;"
+    firstText="&laquo;"
+    lastText="&raquo;"
+  >
+  </pagination>
 </div>

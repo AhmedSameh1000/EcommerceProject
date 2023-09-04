@@ -1,0 +1,105 @@
+<div class="container mt-5 justify-content-center p-3">
+  <h2>Product Form</h2>
+  <form class="m-auto" [formGroup]="FormGroup" enctype="multipart/form-data">
+    <!-- Name Field -->
+    <div class="row mb-3">
+      <div class="col form-group">
+        <label for="name">Name:</label>
+        <input
+          [ngClass]="{
+            'is-invalid': FormGroup.controls['name'].errors
+          }"
+          formControlName="name"
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+        />
+      </div>
+
+      <!-- Price Field -->
+      <div class="col form-group">
+        <label for="price">Price:</label>
+        <input
+          [ngClass]="{
+            'is-invalid': FormGroup.controls['price'].errors
+          }"
+          formControlName="price"
+          type="text"
+          class="form-control"
+          id="price"
+          name="price"
+        />
+      </div>
+    </div>
+
+    <!-- Description Field -->
+    <div class="form-group mb-3">
+      <label for="description">Description:</label>
+      <textarea
+        [ngClass]="{
+          'is-invalid': FormGroup.controls['description'].errors
+        }"
+        formControlName="description"
+        class="form-control"
+        id="description"
+        name="description"
+        rows="4"
+      ></textarea>
+    </div>
+
+    <!-- Image Field -->
+    <div class="form-group mb-3">
+      <label for="image">Image:</label>
+      <input
+        (change)="SelectImage($event)"
+        #img
+        type="file"
+        class="form-control"
+        id="image"
+        name="image"
+      />
+    </div>
+
+    <!-- First Select List -->
+    <div class="row mb-3">
+      <div class="col form-group" *ngIf="Types">
+        <label for="select1">Select an Type:</label>
+        <select
+          (change)="SelectType($event)"
+          class="form-control"
+          id="select1"
+          name="select1"
+        >
+          <option>Select--Type</option>
+          <option *ngFor="let Type of Types" value="{{ Type.id }}">
+            {{ Type.name }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Second Select List -->
+      <div class="col form-group" *ngIf="Brands">
+        <label for="select2">Select an Brand:</label>
+        <select
+          (change)="SelectBrand($event)"
+          class="form-control"
+          id="select2"
+          name="select2"
+        >
+          <option>Select--Brand</option>
+          <option *ngFor="let Brand of Brands" value="{{ Brand.id }}">
+            {{ Brand.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <!-- Submit Button -->
+    <div class="row gap-3">
+      <div class="btn btn-success w-25" (click)="CreateNewProduct(img)">
+        Create
+      </div>
+      <div class="btn btn-danger w-25" (click)="Close()">Close</div>
+    </div>
+  </form>
+</div>
