@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild, createComponent } from '@angular/core';
+import Swal from 'sweetalert2'
 
 import { Pagination } from 'src/app/shared/Models/Paging';
 import { Product } from 'src/app/shared/Models/Product';
@@ -30,8 +31,6 @@ export class ProductsListComponent implements OnInit {
       error:(e)=>console.log(e)
     })
   }
-
-
   OpenDialog(){
   let dialogref= this.matDialog.open(CreateProductComponent,{
       width:"700px",
@@ -43,10 +42,35 @@ export class ProductsListComponent implements OnInit {
       }
     })
   }
-
   change(event:any){
     this.AllParams.page=event.page;
     this.LoadProduct()
+  }
+
+  delete(id:number,Div:HTMLElement){
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) 
+      {
+     this.ShopServic.DeleteProduct(id).subscribe
+     ({
+          next:(res)=>{
+            Div.remove()
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+      }
+     })
+      }
+    })
   }
 }
 

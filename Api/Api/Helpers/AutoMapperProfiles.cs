@@ -14,6 +14,7 @@ namespace Api.AutoMapperProfile
                 .ForMember(dest => dest.ProductBrand, opt => { opt.MapFrom(src => src.ProductBrand.Name); });
 
             CreateMap<Product, ProductImages>();
+     
         }
     }
 }

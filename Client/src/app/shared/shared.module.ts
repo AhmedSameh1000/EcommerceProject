@@ -7,8 +7,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 let _shardModulese=[
+
   PaginationModule.forRoot(),
   ToastrModule.forRoot({
     closeButton:true,
@@ -17,7 +21,10 @@ let _shardModulese=[
   }), 
   NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
   CarouselModule.forRoot(),
-  MatDialogModule
+  MatDialogModule,
+  MatSelectModule,
+  MatFormFieldModule,
+  BsDropdownModule.forRoot()
 ]
 
 @NgModule({

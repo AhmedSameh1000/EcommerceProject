@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="text-center" *ngFor="let Product of Pagination.products">
+      <tr class="text-center" *ngFor="let Product of Pagination.products" #Div>
         <td>{{ Product.name }}</td>
         <td>{{ Product.price }}</td>
         <td>{{ Product.productBrand }}</td>
@@ -25,7 +25,9 @@
           >
             Show
           </button>
-          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-danger" (click)="delete(Product.id, Div)">
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>

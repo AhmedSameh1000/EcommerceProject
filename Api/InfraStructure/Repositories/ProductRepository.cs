@@ -33,6 +33,18 @@ namespace InfraStructure.Repositories
             this.mapper = mapper;
         }
 
+        public async Task<ProductBrand> CreateBrand(BrandOrTypeToCreate Object)
+        {
+           var Brand = new ProductBrand()
+           {
+               Name=Object.Name
+           };
+            Context.ProductBrands.Add(Brand);   
+            await Context.SaveChangesAsync();
+            return Brand;
+        
+        }
+
         public async Task<Product> CreateProductAsync(ProductToCreateDTO productTo)
         {
             string RootPath = _host.WebRootPath;
@@ -62,6 +74,28 @@ namespace InfraStructure.Repositories
             return  ProductToSave;
         }
 
+        public async Task<ProductType> Createtype(BrandOrTypeToCreate Object)
+        {
+            var Type = new ProductType()
+            {
+                Name = Object.Name
+            };
+            Context.ProductTypes.Add(Type);
+            await Context.SaveChangesAsync();
+            return Type;
+        }
+
+        public void DeleteBrand(int id)
+        {
+            var Brand = Context.ProductBrands.Find(id);
+
+            if(Brand != null)
+            {
+                 Context.ProductBrands.Remove(Brand);
+                 Context.SaveChanges();
+            }
+        }
+
         public async Task DeleteProductAsync(int id)
         {
             var Product = await Context.Products.FindAsync(id);
@@ -80,6 +114,17 @@ namespace InfraStructure.Repositories
             await Context.SaveChangesAsync();
         }
 
+        public void DeleteType(int id)
+        {
+            var Type = Context.ProductTypes.Find(id);
+
+            if (Type != null)
+            {
+                Context.ProductTypes.Remove(Type);
+                 Context.SaveChanges();
+            }
+        }
+
         public async Task<List<ProductImages>> GetImagesForSomeProducts()
         {
             var ProductsCount=await Context.Products.CountAsync();
@@ -92,7 +137,9 @@ namespace InfraStructure.Repositories
 
         public async Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync()
         {
-            return await Context.ProductBrands.ToListAsync();
+            var Brands=await Context.ProductBrands.ToListAsync();
+
+            return Brands;
         }
 
         public async Task<ProductPaginationResponse> GetProductsAsync(PaginationParams @params)

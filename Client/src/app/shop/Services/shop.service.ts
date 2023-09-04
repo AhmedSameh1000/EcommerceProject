@@ -48,5 +48,17 @@ export class ShopService {
   DeleteProduct(id:number){
   return  this.Http.delete(environment.baseUrl+"Product/DeleteProductAsync/"+id)
   }
+  CreateBrand(Brand:any){
+    return this.Http.post(environment.baseUrl+"Product/CreateBrand",Brand)
+  }
+  DeleteBrand(id:any){
+    return this.Http.delete(environment.baseUrl+"Product/DeleteBrand/"+id)
+  }
+  CreateType(Type:any){
+    return this.Http.post(environment.baseUrl+"Product/CreateType",Type)
+  }
+  DeleteType(id:any){
+    return this.Http.delete(environment.baseUrl+"Product/DeleteType/"+id)
+  }
 }
 

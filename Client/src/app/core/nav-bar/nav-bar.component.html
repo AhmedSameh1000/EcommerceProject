@@ -37,15 +37,46 @@
         <li class="nav-item pointer">
           <a routerLinkActive="active" routerLink="/Products">Shop</a>
         </li>
-        <li
-          *ngIf="AuthService.isAdmin()"
-          routerLink="/ProductsList"
-          class="nav-item pointer"
-        >
-          <a routerLinkActive="active">List</a>
-        </li>
+
         <li class="nav-item pointer">
           <a routerLinkActive="active" routerLink="/Contact">Contact</a>
+        </li>
+        <li *ngIf="AuthService.isAdmin()" class="nav-item pointer">
+          <div routerLinkActive="active" class="btn-group" dropdown>
+            <div
+              id="button-basic"
+              dropdownToggle
+              type="button"
+              class="dropdown-toggle"
+              aria-controls="dropdown-basic"
+            >
+              Control Panal <span class="caret"></span>
+            </div>
+            <ul
+              id="dropdown-basic"
+              *dropdownMenu
+              class="mt-2 w-100 dropdown-menu"
+              role="menu"
+              aria-labelledby="button-basic"
+            >
+              <li routerLink="/ProductsList" class="dropdown-item p-3">
+                <a
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  >Mange Products</a
+                >
+              </li>
+              <li routerLink="/BrandsList" class="dropdown-item p-3">
+                <a routerLinkActive="active">Mange Brands</a>
+              </li>
+              <li class="dropdown-item p-3">
+                <a routerLinkActive="active">Mange Types</a>
+              </li>
+              <li class="dropdown-item p-3">
+                <a routerLinkActive="active">Mange Users</a>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
       <ul class="navbar-nav gap-3">

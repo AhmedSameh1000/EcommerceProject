@@ -71,7 +71,7 @@
           id="select1"
           name="select1"
         >
-          <option>Select--Type</option>
+          <option disabled selected>Select--Type</option>
           <option *ngFor="let Type of Types" value="{{ Type.id }}">
             {{ Type.name }}
           </option>
@@ -87,7 +87,7 @@
           id="select2"
           name="select2"
         >
-          <option>Select--Brand</option>
+          <option disabled selected>Select--Brand</option>
           <option *ngFor="let Brand of Brands" value="{{ Brand.id }}">
             {{ Brand.name }}
           </option>
@@ -95,7 +95,7 @@
       </div>
     </div>
     <!-- Submit Button -->
-    <div class="row gap-3">
+    <div class="row gap-3 justify-content-center">
       <div class="btn btn-success w-25" (click)="CreateNewProduct(img)">
         Create
       </div>

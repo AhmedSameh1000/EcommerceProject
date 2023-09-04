@@ -1,0 +1,24 @@
+<div class="container p-3">
+  <h1 class="text-center">Brand Form</h1>
+  <form>
+    <!-- Input for Name -->
+    <div class="form-group">
+      <label for="name">Brand Name</label>
+      <input
+        type="text"
+        class="form-control mt-2"
+        id="name"
+        placeholder="Enter your name"
+        #inp
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <div class="row justify-content-center gap-2 mt-3">
+      <button class="col-3 btn btn-primary" (click)="Create(inp)">
+        Create
+      </button>
+      <button class="col-3 btn btn-danger" (click)="Close()">Close</button>
+    </div>
+  </form>
+</div>

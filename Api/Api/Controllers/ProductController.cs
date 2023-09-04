@@ -24,6 +24,64 @@ namespace Api.Controllers
             this.productRepository = productRepository;
             this.mapper = mapper;
         }
+
+
+
+
+
+
+
+        [HttpDelete("DeleteBrand/{id}")]
+        public  Task DeleteBrand(int id)
+        {
+            productRepository.DeleteBrand(id);
+            return Task.CompletedTask; 
+        }
+            
+        [HttpDelete("DeleteType/{id}")]
+        public Task Deletetype(int id)
+        {
+            productRepository.DeleteType(id);
+            return Task.CompletedTask;
+        }
+
+
+
+
+        [HttpPost("CreateBrand")]
+        public async Task<IActionResult> CreateBrand(BrandOrTypeToCreate obj)
+        {
+            var Brands = await productRepository.GetProductBrandsAsync();
+            if (Brands.Any(c => c.Name.ToLower() == obj.Name.ToLower()))
+            {
+                var Message = "the Brand is Already Exist";
+                return Ok(Message);
+            }
+
+
+            var Brand = await productRepository.CreateBrand(obj);
+            return Ok(Brand);  
+        }   
+        [HttpPost("CreateType")]
+        public async Task<IActionResult> Createtype(BrandOrTypeToCreate obj)
+        {
+            var Types = await productRepository.GetProductTypesAsync();
+
+            if (Types.Any(c => c.Name.ToLower() == obj.Name.ToLower()))
+            {
+                var Message = "the Type is Already Exist";
+                return Ok(Message);
+            }
+
+
+            var Type = await productRepository.Createtype(obj);
+            return Ok(Type);  
+        }
+
+
+
+
+
         [HttpGet("Products")]
         public async Task<IActionResult> GetProducts([FromQuery] PaginationParams? param)
         {

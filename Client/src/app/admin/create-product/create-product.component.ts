@@ -58,9 +58,10 @@ export class CreateProductComponent implements OnInit {
   CreateNewProduct(img:HTMLInputElement){
     if(img.value==""){
       this.toaster.error("please Select an image");
+      return;
     }
     if(this.FormGroup.invalid){
-      return
+      return;
     }
 
     let MyData = new FormData();
@@ -92,7 +93,8 @@ export class CreateProductComponent implements OnInit {
   SelectBrand(event:any){
     this.FormGroup.get("ProductBrandId")?.setValue(event.target.value)
     console.log(event.target.value)
-  
-  
   }
+  
+ 
+
 }
