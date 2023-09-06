@@ -34,6 +34,9 @@ export class RegisterComponent implements OnInit{
     if(this.RegisterFormData.invalid){
       return;
     }
+    if(this.RegisterFormData.value.password!=this.RegisterFormData.value.Confirmpassword){
+      return;
+    }
     this.AuthService.Register(this.RegisterFormData.value).subscribe({
       next:(res:any)=>{
         localStorage.setItem("token",res.token);

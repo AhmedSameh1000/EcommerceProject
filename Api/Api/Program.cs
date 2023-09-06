@@ -67,6 +67,7 @@ builder.Services.AddScoped<IProductRepository,ProductRepository>();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IInitializer, Initializer>();
+builder.Services.AddScoped<IUserRepository,UserRepository>();
 var app = builder.Build();
 app.UseStaticFiles();
 // Configure the HTTP request pipeline.

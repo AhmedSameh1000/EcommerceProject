@@ -5,6 +5,7 @@
   <table class="table table-dark table-hover" *ngIf="Pagination">
     <thead>
       <tr class="text-center">
+        <th scope="col">Id</th>
         <th scope="col">Name</th>
         <th scope="col">Price</th>
         <th scope="col">Brand</th>
@@ -14,6 +15,7 @@
     </thead>
     <tbody>
       <tr class="text-center" *ngFor="let Product of Pagination.products" #Div>
+        <td>{{ Product.id }}</td>
         <td>{{ Product.name }}</td>
         <td>{{ Product.price }}</td>
         <td>{{ Product.productBrand }}</td>

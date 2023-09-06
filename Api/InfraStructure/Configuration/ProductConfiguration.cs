@@ -24,11 +24,11 @@ namespace InfraStructure.Config
 
             builder.HasOne(p => p.ProductBrand)
                 .WithMany()
-                .HasForeignKey(p=>p.ProductBrandId);
+                .HasForeignKey(p => p.ProductBrandId);
 
             builder.HasOne(p => p.productType)
                 .WithMany()
-                .HasForeignKey(p=>p.ProductTypeId);
+                .HasForeignKey(p => p.ProductTypeId);
 
         }
     }

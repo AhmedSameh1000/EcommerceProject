@@ -58,7 +58,15 @@ export class BrandListComponent implements OnInit {
               'Deleted!',
               'Brand has been deleted.',
               'success'
-            )
+            ) 
+      },
+      error:(error)=>{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          footer: 'This Brand Have Products'
+        })
       }
      })
       }
