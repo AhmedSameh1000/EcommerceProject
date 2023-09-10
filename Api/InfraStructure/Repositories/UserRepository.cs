@@ -20,12 +20,14 @@ namespace InfraStructure.Repositories
     {
         private readonly UserManager<User> userManager;
         private readonly IMapper mapper;
+        private readonly AppDbContext context;
 
         public UserRepository(
-            UserManager<User> userManager, IMapper mapper)
+            UserManager<User> userManager, IMapper mapper,AppDbContext context)
         {
             this.userManager = userManager;
             this.mapper = mapper;
+            this.context = context;
         }
         public async Task DeleteUser(string id)
         {
@@ -33,10 +35,47 @@ namespace InfraStructure.Repositories
             await userManager.DeleteAsync(User);
         }
 
-        public Task<UserRolesDTO> GetUserRoles()
+        public async Task<UserRolesDTO> GetUserRoles(string id)
         {
-            throw new NotImplementedException();
+            var UserSelected = await userManager.FindByIdAsync(id);
+            if (UserSelected is null) return null;
+
+            var Roles =context.Roles.ToListAsync();
+
+            var UserRolesToReturn = new UserRolesDTO()
+            {
+                UserId = UserSelected.Id,
+                UserName=UserSelected.FirstName+" " +UserSelected.LastName,
+                Roles=Roles.Result.Select(role=>new RolesDTo()
+                {
+                    RoleId=role.Id,
+                    RoleName=role.Name,
+                    IsSelected=userManager.IsInRoleAsync(UserSelected,role.Name).Result
+                }).ToList(),
+            };
+
+            return UserRolesToReturn;
         }
+
+        public async Task SetUserRoles(UserRolesDTO userRoles)
+        {
+            var UserSelected = await userManager.FindByIdAsync(userRoles.UserId);
+            if (UserSelected is null) return ;
+
+
+            var UserRoles = await userManager.GetRolesAsync(UserSelected);
+            foreach (var Role in userRoles.Roles)
+            {
+                if (UserRoles.Any(r => r == Role.RoleName) && !Role.IsSelected)
+                    await userManager.RemoveFromRoleAsync(UserSelected, Role.RoleName);
+
+                if (!UserRoles.Any(r => r == Role.RoleName) && Role.IsSelected)
+                    await userManager.AddToRoleAsync(UserSelected, Role.RoleName);
+            }
+        }
+
+
+
 
         public async Task<UserPaginationResponse> GetUsers(PaginationParams @params)
         {
@@ -85,10 +124,7 @@ namespace InfraStructure.Repositories
 
         }
 
-        public Task SetUserRoles(UserRolesDTO userRoles)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 
 }

@@ -17,6 +17,22 @@ namespace Api.Controllers
         }
 
 
+        [HttpGet("UserWithHisRoles/{id}")]
+        public async Task<IActionResult> GetUserWithHisRoles(string id)
+        {
+            var UserRoles=await userRepository.GetUserRoles(id);
+
+            return Ok(UserRoles);
+        }  
+        [HttpPost("SetUserRoles")]
+        public async Task<IActionResult> SetUserRoles(UserRolesDTO userRoles)
+        {
+            await userRepository.SetUserRoles(userRoles);
+            return Ok(userRoles);
+        }
+
+
+
         [HttpGet("AllUsers")]
         public async Task<IActionResult> Getusers([FromQuery] PaginationParams? param)
         {

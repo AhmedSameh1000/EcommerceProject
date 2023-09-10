@@ -12,6 +12,7 @@ import { CreateBrandComponent } from './create-brand/create-brand.component';
 import { TypeListComponent } from './type-list/type-list.component';
 import { CreateTypeComponent } from './create-type/create-type.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { MangeUserComponent } from './mange-user/mange-user.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { UsersListComponent } from './users-list/users-list.component';
     TypeListComponent,
     CreateTypeComponent,
     UsersListComponent,
+    MangeUserComponent,
   ],
   imports: [
     CommonModule,

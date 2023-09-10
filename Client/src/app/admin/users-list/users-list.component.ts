@@ -3,6 +3,8 @@ import { Pagination } from 'src/app/shared/Models/Paging';
 import { UserService } from '../UserService/user.service';
 import { params } from 'src/app/shared/Models/params';
 import Swal from 'sweetalert2'
+import { MatDialog } from '@angular/material/dialog';
+import { MangeUserComponent } from '../mange-user/mange-user.component';
 
 @Component({
   selector: 'app-users-list',
@@ -12,6 +14,7 @@ import Swal from 'sweetalert2'
 export class UsersListComponent {
   Pagination!:any
   constructor(private UserService:UserService,
+    private matDialog:MatDialog
     ){
   }
   ngOnInit(): void {
@@ -55,6 +58,17 @@ export class UsersListComponent {
             )
       }
      })
+      }
+    })
+  }
+  Open(id:any){
+    var dialogRef= this.matDialog.open(MangeUserComponent,{
+       data:id,
+       width:"700px"
+    })
+    dialogRef.afterClosed().subscribe(res=>{
+      if(res){
+        this.LoadUsers()
       }
     })
   }

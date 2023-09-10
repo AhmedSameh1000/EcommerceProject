@@ -13,7 +13,7 @@ namespace Core.Interfaces
 
         Task DeleteUser(string id);
 
-        Task<UserRolesDTO> GetUserRoles();
+        Task<UserRolesDTO> GetUserRoles(string id);
 
         Task SetUserRoles(UserRolesDTO userRoles);
     }

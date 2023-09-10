@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Pagination } from 'src/app/shared/Models/Paging';
 import { Product } from 'src/app/shared/Models/Product';
 import { params } from 'src/app/shared/Models/params';
+import { userRole } from 'src/app/shared/Models/userRole';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -25,5 +26,11 @@ export class UserService {
    }
    DeleteUser(id:any){
     return this.Http.delete(environment.baseUrl+"User/DeleteUser/"+id)
+   }
+   GetUserRoles(id:any){
+    return this.Http.get<userRole>(environment.baseUrl+"User/UserWithHisRoles/"+id)
+   }
+   SetUserRoles(UserRoles:any){
+   return this.Http.post(environment.baseUrl+"User/SetUserRoles",UserRoles)
    }
 }

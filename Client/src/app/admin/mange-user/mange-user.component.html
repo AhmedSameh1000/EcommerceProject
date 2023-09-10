@@ -1,0 +1,33 @@
+<div class="p-2 container-fluid" *ngIf="UserWithRoles">
+  <h1>Mange User</h1>
+  <form method="post">
+    <div class="card mt-4">
+      <div class="card-header">
+        <h2>{{ UserWithRoles.userName }}</h2>
+        Add/Remove Roles
+      </div>
+      <div class="card-body">
+        <div
+          *ngFor="let UserRole of UserWithRoles.roles"
+          class="form-check m-1"
+        >
+          <input
+            [checked]="UserRole.isSelected"
+            type="checkbox"
+            class="form-check-input"
+            #inp
+            (click)="DoSomeThing(UserRole.roleId, UserRole.roleName, inp)"
+          />
+
+          <label class="form-check-label">{{ UserRole.roleName }}</label>
+        </div>
+        <div class="card-footer d-flex justify-content-center gap-3">
+          <button class="btn btn-primary w-25" (click)="Create()">Save</button>
+          <button class="btn btn-secondary w-25" (click)="Close()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
