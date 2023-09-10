@@ -39,14 +39,28 @@ export class AuthService {
     if(!this.IsLogIn())
     return;
     var token=this.GetToken();
-    var TokeneData=this.JWTHealper.decodeToken(token!)
-    if(TokeneData.roles=='Admin'){
+    var TokeneData=this.JWTHealper.decodeToken(token!).roles as string[];
+  console.log(TokeneData)
+  
+    if(TokeneData.includes('Admin')){
       return true
     }
     else  {
       return false;
     }
-    
+  }
+
+  isModerator(){
+    if(!this.IsLogIn())
+    return;
+    var token=this.GetToken();
+    var TokeneData=this.JWTHealper.decodeToken(token!).roles as string[];
+    if(TokeneData.includes('Moderator')){
+      return true
+    }
+    else  {
+      return false;
+    }
   }
 
 }

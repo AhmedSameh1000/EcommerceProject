@@ -41,7 +41,7 @@
         <li class="nav-item pointer">
           <a routerLinkActive="active" routerLink="/Contact">Contact</a>
         </li>
-        <li *ngIf="AuthService.isAdmin()" class="nav-item pointer">
+        <li *ngIf="AuthService.isModerator()" class="nav-item pointer">
           <div routerLinkActive="active" class="btn-group" dropdown>
             <div
               id="button-basic"
@@ -72,7 +72,11 @@
               <li routerLink="/TypesList" class="dropdown-item p-3">
                 <a routerLinkActive="active">Mange Types</a>
               </li>
-              <li routerLink="/UsersList" class="dropdown-item p-3">
+              <li
+                *ngIf="AuthService.isModerator() && AuthService.isAdmin()"
+                routerLink="/UsersList"
+                class="dropdown-item p-3"
+              >
                 <a routerLinkActive="active">Mange Users</a>
               </li>
             </ul>

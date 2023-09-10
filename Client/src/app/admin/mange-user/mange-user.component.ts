@@ -62,8 +62,7 @@ Role!:any
  
 
     Create(){
-      let ar=["sda",'das']
-      ar.join("|")
+    
       this.UserService.SetUserRoles(this.userRoles).subscribe({
         next:(res)=>{
           this.matDialogRef.close(true)

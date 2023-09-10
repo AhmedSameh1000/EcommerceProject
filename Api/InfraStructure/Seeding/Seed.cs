@@ -40,6 +40,7 @@ namespace InfraStructure.Seeding
             if(!await roleManager.RoleExistsAsync(Constant.Admin))
             {
                 await roleManager.CreateAsync(new IdentityRole(Constant.Admin));
+                await roleManager.CreateAsync(new IdentityRole(Constant.Moderator));
                 await roleManager.CreateAsync(new IdentityRole(Constant.User));
                 var admin = new User()
                 {
@@ -56,6 +57,8 @@ namespace InfraStructure.Seeding
                 if (Result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(admin, Constant.Admin);
+                    await userManager.AddToRoleAsync(admin, Constant.Moderator);
+                    await userManager.AddToRoleAsync(admin, Constant.User);
                 }
             }
       
