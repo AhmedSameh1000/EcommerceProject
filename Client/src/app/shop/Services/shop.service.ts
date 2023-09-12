@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, Type } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Brand } from 'src/app/shared/Models/Brand';
+import { CartItem } from 'src/app/shared/Models/CartItem';
 import { Pagination } from 'src/app/shared/Models/Paging';
 import { Product } from 'src/app/shared/Models/Product';
 import { type } from 'src/app/shared/Models/Type';
@@ -37,7 +38,7 @@ export class ShopService {
     return this.Http.get<type[]>(environment.baseUrl+"Product/Types")
   }
   GetProduct(id:number){
-    return this.Http.get<Product>(environment.baseUrl+`Product/${id}`)
+    return this.Http.get<CartItem>(environment.baseUrl+`Product/${id}`)
   }
   GetProductsImages(){
     return this.Http.get<Product[]>(environment.baseUrl+"Product/ProductsImages")
@@ -59,6 +60,18 @@ export class ShopService {
   }
   DeleteType(id:any){
     return this.Http.delete(environment.baseUrl+"Product/DeleteType/"+id)
+  }
+  GetCartItems(id:string){
+    return this.Http.get(environment.baseUrl+"CartItem/GetCartItems/"+id)
+  }
+  IncrementCartItem(id:any){
+    return this.Http.get(environment.baseUrl+"CartItem/Increment/"+id)
+  }
+  DecrementCartItem(id:any){
+    return this.Http.get(environment.baseUrl+"CartItem/Decrement/"+id)
+  }
+  RemoveCartItem(id:any){
+    return this.Http.delete(environment.baseUrl+"CartItem/Remove/"+id)
   }
 }
 

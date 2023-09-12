@@ -40,7 +40,7 @@ export class AuthService {
     return;
     var token=this.GetToken();
     var TokeneData=this.JWTHealper.decodeToken(token!).roles as string[];
-  console.log(TokeneData)
+  
   
     if(TokeneData.includes('Admin')){
       return true
@@ -50,6 +50,13 @@ export class AuthService {
     }
   }
 
+  GetLoggedInUserId(){
+    if(!this.IsLogIn())
+    return;
+    var token=this.GetToken();
+    var TokeneData=this.JWTHealper.decodeToken(token!)
+    return TokeneData.uid
+  }
   isModerator(){
     if(!this.IsLogIn())
     return;

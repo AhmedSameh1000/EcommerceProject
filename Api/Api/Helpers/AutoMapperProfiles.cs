@@ -21,6 +21,8 @@ namespace Api.AutoMapperProfile
             CreateMap<Product, ProductImages>();
 
             CreateMap<User, UserDto>();
+            CreateMap<cartItem,cartItemDTO>().ReverseMap();
+            CreateMap<cartItem, CartItemToAdd>().ReverseMap();
         }
     }
 }

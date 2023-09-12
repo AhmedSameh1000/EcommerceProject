@@ -20,6 +20,7 @@ namespace InfraStructure.Data
         public DbSet<ProductBrand> ProductBrands { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
 
+        public DbSet <cartItem> cartItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

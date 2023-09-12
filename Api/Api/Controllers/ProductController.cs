@@ -5,6 +5,7 @@ using Core.Interfaces;
 using Core.Models;
 using InfraStructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Api.Controllers
 {
@@ -24,11 +25,6 @@ namespace Api.Controllers
             this.productRepository = productRepository;
             this.mapper = mapper;
         }
-
-
-
-
-
 
 
         [HttpDelete("DeleteBrand/{id}")]
@@ -78,10 +74,6 @@ namespace Api.Controllers
             return Ok(Type);  
         }
 
-
-
-
-
         [HttpGet("Products")]
         public async Task<IActionResult> GetProducts([FromQuery] PaginationParams? param)
         {
@@ -112,17 +104,15 @@ namespace Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProduct(int id)
         {
-            var Product = await productRepository.GetProductsByIdAsync(id);
-            var ProductToReturn = mapper.Map<ProductToReturnDto>(Product);
-
-            return Ok(ProductToReturn);
+            var ProductCartItem = await productRepository.GetProductByIdAsync(id);
+            return Ok(ProductCartItem);
         }
 
         [HttpGet("Types")]
         public async Task<IActionResult> GetProductTypes()
         {
             return Ok(await productRepository.GetProductTypesAsync());
-        }   
+        }
         [HttpGet("Brands")]
         public async Task<IActionResult> GetProductBrands()
         {

@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Net.Http;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace InfraStructure.Repositories
 {
@@ -185,19 +184,28 @@ namespace InfraStructure.Repositories
             };
             return ProductResponse;
         }
-
-        public async Task<Product> GetProductsByIdAsync(int id)
+        public async Task<cartItemDTO> GetProductByIdAsync(int id)
         {
-            return await Context.Products
+            var Product=await Context.Products
                 .Include(p => p.productType)
                 .Include(p => p.ProductBrand)
                 .FirstOrDefaultAsync(p => p.Id == id);
+
+
+            var ProductToReturn = mapper.Map<ProductToReturnDto>(Product);
+
+            var CartItem = new cartItemDTO()
+            {
+                count = 1,
+                productId = id,
+                product= ProductToReturn
+            };
+            return CartItem;
         }
 
         public async Task<IReadOnlyList<ProductType>> GetProductTypesAsync()
         {
             return await Context.ProductTypes.ToListAsync();
-
         }
     }
 }

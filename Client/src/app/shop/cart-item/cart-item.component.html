@@ -1,0 +1,117 @@
+<div *ngIf="CartItems">
+  <form method="post" class="mt-3">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header bg-primary text-light">
+          <div class="row">
+            <div class="col-12">
+              <i class="bi bi-cart"></i>
+              <div
+                class="w-100 d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <strong>Shopping Cart Details</strong>
+                </div>
+                <div>
+                  <i class="fa-solid fa-list"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          *ngIf="CartItems.cartItems.length <= 0"
+          class="h4 text-center mt-3"
+        >
+          No Items Found
+        </div>
+        <div *ngIf="CartItems.cartItems.length >= 1">
+          <div
+            class="shadow pb-3 pt-2 mt-2 d-flex flex-md-row flex-column justify-content-around align-items-center"
+            *ngFor="let item of CartItems.cartItems"
+          >
+            <div class="w-100 d-flex align-items-center justify-content-around">
+              <div>
+                <img width="100" src="{{ item.product.url }}" alt="" />
+              </div>
+              <div class="h4">{{ item.product.name }}</div>
+              <div class="h4">{{ item.product.productType.name }}</div>
+            </div>
+            <div class="d-flex w-100 justify-content-around mt-3">
+              <div (click)="Increment(item.id)" class="btn btn-success">
+                <i class="fa-solid fa-circle-plus"></i>
+              </div>
+              <div class="h3">
+                {{ item.count }} X {{ item.product.price | currency }}
+              </div>
+              <div (click)="Decrement(item.id)" class="btn btn-secondary">
+                <i class="fa-solid fa-circle-minus"></i>
+              </div>
+              <div (click)="Remove(item.id)" class="btn btn-danger">
+                <i class="fa-solid fa-trash"></i>
+              </div>
+            </div>
+          </div>
+          <div
+            class="w-100 mt-2"
+            style="height: 5px; background-color: black"
+          ></div>
+          <hr />
+          <div class="row justify-content-around">
+            <div class="col-12 col-md-6 col-lg-4">
+              <ul class="list-group">
+                <li
+                  class="list-group-item d-flex justify-content-between bg-light"
+                >
+                  <h5 class="text-primary">Cart Items (Count)</h5>
+                  <h5 class="text-primary text-end">
+                    {{ CartItems.cartItems.length }}
+                  </h5>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12 col-md-3 col-lg-4">
+              <ul class="list-group">
+                <li
+                  class="list-group-item d-flex justify-content-between bg-light"
+                >
+                  <h5 class="text-primary">Pieces(Count)</h5>
+                  <h5 class="text-primary text-end">
+                    {{ CartItems.piecesCount }}
+                  </h5>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12 col-md-3 col-lg-4">
+              <ul class="list-group">
+                <li
+                  class="list-group-item d-flex justify-content-between bg-light"
+                >
+                  <h5 class="text-primary">Total (EGP)</h5>
+                  <h5 class="text-primary text-end">
+                    {{ CartItems.cartTotal }}
+                  </h5>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-info w-50" routerLink="/Products">
+              <i class="me-2 fa-solid fa-shop"></i>Continue Shopping
+            </button>
+            <button
+              *ngIf="CartItems.cartItems.length >= 1"
+              type="submit"
+              class="btn btn-primary w-50"
+            >
+              <i class="me-2 fa-regular fa-credit-card"></i> Proceed To Pay
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
