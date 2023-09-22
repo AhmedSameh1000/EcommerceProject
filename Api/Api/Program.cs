@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using InfraStructure.Seeding;
+using API.Models;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,6 +55,7 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
     };
 });
+builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
 
 builder.Services.AddCors(options =>
 {
@@ -90,6 +93,8 @@ using var Scope = app.Services.CreateScope();
 var services = Scope.ServiceProvider;
 var context=services.GetRequiredService<AppDbContext>();
 var logger = services.GetRequiredService<ILogger<Program>>();
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
+
 try
 {
     await context.Database.MigrateAsync();

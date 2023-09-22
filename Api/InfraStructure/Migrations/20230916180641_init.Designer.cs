@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfraStructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230911200331_Init")]
-    partial class Init
+    [Migration("20230916180641_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,6 +27,100 @@ namespace InfraStructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Core.Models.OrderDetail", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int>("count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("orderHeaderId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("productId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("orderHeaderId");
+
+                    b.HasIndex("productId");
+
+                    b.ToTable("OrderDetails");
+                });
+
+            modelBuilder.Entity("Core.Models.OrderHeader", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<DateTime?>("ShippingDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("carrier")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("city")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("orderDate")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("orderStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double?>("orderTotal")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime?>("paymentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("paymentDueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("paymentIntentId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("paymentStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("phoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("sessionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("streetAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("trackingNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("userId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("OrderHeaders");
+                });
 
             modelBuilder.Entity("Core.Models.Product", b =>
                 {
@@ -335,6 +429,36 @@ namespace InfraStructure.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Core.Models.OrderDetail", b =>
+                {
+                    b.HasOne("Core.Models.OrderHeader", "orderHeader")
+                        .WithMany()
+                        .HasForeignKey("orderHeaderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Models.Product", "product")
+                        .WithMany()
+                        .HasForeignKey("productId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("orderHeader");
+
+                    b.Navigation("product");
+                });
+
+            modelBuilder.Entity("Core.Models.OrderHeader", b =>
+                {
+                    b.HasOne("Core.Models.User", "user")
+                        .WithMany()
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("Core.Models.Product", b =>

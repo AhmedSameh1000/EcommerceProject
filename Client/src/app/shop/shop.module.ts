@@ -9,13 +9,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { RouterModule } from '@angular/router';
 import { CartItemComponent } from './cart-item/cart-item.component';
+import { SummaryComponent } from './summary/summary.component';
+import { SuccessPaymentPageComponent } from './success-payment-page/success-payment-page.component';
+import { FailurePaymentPageComponent } from './failure-payment-page/failure-payment-page.component';
 
 
 @NgModule({
   declarations: [
     ShopComponent,
     ProductDetailsComponent,
-    CartItemComponent
+    CartItemComponent,
+    SummaryComponent,
+    SuccessPaymentPageComponent,
+    FailurePaymentPageComponent
   ],
   imports: [
     CommonModule,

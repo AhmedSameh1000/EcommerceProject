@@ -10,10 +10,12 @@ namespace Core.DTOs
     public class CartDto
     {
         public IEnumerable<cartItem> CartItems { get; set; }
+        public OrderHeader  orderHeader { get; set; }
 
         public double cartTotal { get; set; }
 
         public int piecesCount { get; set; }
+
     }
 
 }

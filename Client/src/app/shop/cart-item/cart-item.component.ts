@@ -16,6 +16,8 @@ export class CartItemComponent implements OnInit {
    this.GetCartItems()
   }
 
+ 
+
   Increment(id:any){
     this.shopService.IncrementCartItem(id).subscribe({
       next:(res)=>{
@@ -73,6 +75,7 @@ export class CartItemComponent implements OnInit {
       .subscribe({
         next:(res:any)=>{
           this.CartItems=res
+          console.log(res)
         },
         error:(err)=>{
         }

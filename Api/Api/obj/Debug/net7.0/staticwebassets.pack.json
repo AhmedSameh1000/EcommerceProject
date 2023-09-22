@@ -1,28 +1,24 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\5597f3b4-6169-4c01-bc71-70b892503cea.jpg",
-      "PackagePath": "staticwebassets\\Images\\5597f3b4-6169-4c01-bc71-70b892503cea.jpg"
+      "Id": "C:\\Users\\Administrator\\Desktop\\Final\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\0e987b40-e804-47be-b4e0-395c9d977ead.jpg",
+      "PackagePath": "staticwebassets\\Images\\0e987b40-e804-47be-b4e0-395c9d977ead.jpg"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\76094673-6e49-4e97-b75e-fcbdbecd6534.jpg",
-      "PackagePath": "staticwebassets\\Images\\76094673-6e49-4e97-b75e-fcbdbecd6534.jpg"
+      "Id": "C:\\Users\\Administrator\\Desktop\\Final\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\469e4ca6-b542-4283-8d67-cfe36e8705fb.jpg",
+      "PackagePath": "staticwebassets\\Images\\469e4ca6-b542-4283-8d67-cfe36e8705fb.jpg"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\a86a40ec-0c31-4b0d-a51d-7029a8a62fc0.jpg",
-      "PackagePath": "staticwebassets\\Images\\a86a40ec-0c31-4b0d-a51d-7029a8a62fc0.jpg"
+      "Id": "C:\\Users\\Administrator\\Desktop\\Final\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\4716de93-635a-4a9c-b11e-d25426cdef21.jpg",
+      "PackagePath": "staticwebassets\\Images\\4716de93-635a-4a9c-b11e-d25426cdef21.jpg"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\b8d119e6-165d-48cf-bb44-d720f6d45f22.jpg",
-      "PackagePath": "staticwebassets\\Images\\b8d119e6-165d-48cf-bb44-d720f6d45f22.jpg"
+      "Id": "C:\\Users\\Administrator\\Desktop\\Final\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\8ff9e8b7-1687-4d6f-aa9c-4f80a3b1c9f6.jpg",
+      "PackagePath": "staticwebassets\\Images\\8ff9e8b7-1687-4d6f-aa9c-4f80a3b1c9f6.jpg"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\bf512847-b67e-4779-a415-a6033cc691c0.jpg",
-      "PackagePath": "staticwebassets\\Images\\bf512847-b67e-4779-a415-a6033cc691c0.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New folder\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\f0e1a9d1-fb6b-47fb-9e0f-ba1122cc14bb.jpg",
-      "PackagePath": "staticwebassets\\Images\\f0e1a9d1-fb6b-47fb-9e0f-ba1122cc14bb.jpg"
+      "Id": "C:\\Users\\Administrator\\Desktop\\Final\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\d578a1f0-e2b7-48c2-8010-7ef649e95b18.jpg",
+      "PackagePath": "staticwebassets\\Images\\d578a1f0-e2b7-48c2-8010-7ef649e95b18.jpg"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Api.Microsoft.AspNetCore.StaticWebAssets.props",

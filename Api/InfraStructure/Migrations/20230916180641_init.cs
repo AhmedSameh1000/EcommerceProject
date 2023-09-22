@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InfraStructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -186,6 +186,40 @@ namespace InfraStructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "OrderHeaders",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    userId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    orderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ShippingDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    orderTotal = table.Column<double>(type: "float", nullable: true),
+                    orderStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    paymentStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    trackingNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    carrier = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    paymentDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    paymentDueDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    phoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    streetAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    city = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    sessionId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    paymentIntentId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderHeaders", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_OrderHeaders_AspNetUsers_userId",
+                        column: x => x.userId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
@@ -242,6 +276,34 @@ namespace InfraStructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "OrderDetails",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    orderHeaderId = table.Column<int>(type: "int", nullable: false),
+                    productId = table.Column<int>(type: "int", nullable: false),
+                    count = table.Column<int>(type: "int", nullable: false),
+                    price = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderDetails", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_OrderDetails_OrderHeaders_orderHeaderId",
+                        column: x => x.orderHeaderId,
+                        principalTable: "OrderHeaders",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderDetails_Products_productId",
+                        column: x => x.productId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -292,6 +354,21 @@ namespace InfraStructure.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OrderDetails_orderHeaderId",
+                table: "OrderDetails",
+                column: "orderHeaderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderDetails_productId",
+                table: "OrderDetails",
+                column: "productId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderHeaders_userId",
+                table: "OrderHeaders",
+                column: "userId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_ProductBrandId",
                 table: "Products",
                 column: "ProductBrandId");
@@ -324,13 +401,19 @@ namespace InfraStructure.Migrations
                 name: "cartItems");
 
             migrationBuilder.DropTable(
+                name: "OrderDetails");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "OrderHeaders");
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "ProductBrands");

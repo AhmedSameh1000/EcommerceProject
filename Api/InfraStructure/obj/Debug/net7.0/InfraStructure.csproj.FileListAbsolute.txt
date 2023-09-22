@@ -49,3 +49,20 @@ C:\Users\Administrator\Desktop\New folder\EcommerceProject\Api\InfraStructure\ob
 C:\Users\Administrator\Desktop\New folder\EcommerceProject\Api\InfraStructure\obj\Debug\net7.0\InfraStructure.pdb
 C:\Users\Administrator\Desktop\New folder\EcommerceProject\Api\InfraStructure\obj\Debug\net7.0\InfraStructure.genruntimeconfig.cache
 C:\Users\Administrator\Desktop\New folder\EcommerceProject\Api\InfraStructure\obj\Debug\net7.0\ref\InfraStructure.dll
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\bin\Debug\net7.0\InfraStructure.deps.json
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\bin\Debug\net7.0\InfraStructure.runtimeconfig.json
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\bin\Debug\net7.0\InfraStructure.dll
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\bin\Debug\net7.0\InfraStructure.pdb
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\bin\Debug\net7.0\Core.dll
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\bin\Debug\net7.0\Core.pdb
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\obj\Debug\net7.0\InfraStructure.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\obj\Debug\net7.0\InfraStructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\obj\Debug\net7.0\InfraStructure.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\obj\Debug\net7.0\InfraStructure.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\obj\Debug\net7.0\InfraStructure.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\obj\Debug\net7.0\InfraStructure.csproj.CopyComplete
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\obj\Debug\net7.0\InfraStructure.dll
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\obj\Debug\net7.0\refint\InfraStructure.dll
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\obj\Debug\net7.0\InfraStructure.pdb
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\obj\Debug\net7.0\InfraStructure.genruntimeconfig.cache
+C:\Users\Administrator\Desktop\Final\EcommerceProject\Api\InfraStructure\obj\Debug\net7.0\ref\InfraStructure.dll

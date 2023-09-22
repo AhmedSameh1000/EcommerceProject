@@ -73,5 +73,20 @@ export class ShopService {
   RemoveCartItem(id:any){
     return this.Http.delete(environment.baseUrl+"CartItem/Remove/"+id)
   }
+  StartPay(userid:any){
+    return this.Http.post(environment.baseUrl+"CartItem/SummaryPost/"+userid,{})
+  }
+
+  public summaryGet(userId:any){
+    return this.Http.get(environment.baseUrl+`CartItem/SummaryGet/${userId}`)
+  }
+  public summaryPost(userId:any){
+    return this.Http.post(environment.baseUrl+`CartItem/SummaryPost/${userId}`,{})
+  }
+  public OrderConfirmation(id:any){
+    return this.Http.get(environment.baseUrl+`CartItem/OrderConfirmation?id=${id}`)
+  }
 }
+
+
 

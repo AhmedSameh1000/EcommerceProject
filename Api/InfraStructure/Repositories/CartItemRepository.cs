@@ -40,6 +40,18 @@ namespace InfraStructure.Repositories
                  context.SaveChanges();
         }
 
+        public void AddOrderDetail(OrderDetail orderDetail)
+        {
+           context.OrderDetails.Add(orderDetail);
+            context.SaveChanges();
+        }
+
+        public void AddOrderHeader(OrderHeader orderHeader)
+        {
+            context.OrderHeaders.Add(orderHeader);
+            context.SaveChanges();
+        }
+
         public void DecrementCartItem(int id)
         {
             var cartItem = context.cartItems.Find(id);
@@ -62,6 +74,11 @@ namespace InfraStructure.Repositories
             return CartItems;
         }
 
+        public OrderHeader GetOrderHeader(int id)
+        {
+            return context.OrderHeaders.FirstOrDefault(c => c.id == id);
+        }
+
         public void IncrementCartItem(int id)
         {
             var cartItem = context.cartItems.Find(id);
@@ -80,6 +97,49 @@ namespace InfraStructure.Repositories
                 context.cartItems.Remove(cartItem);
                 context.SaveChanges();
             }
+        }
+
+        public void RemoveRange(List<cartItem> items)
+        {
+            context.RemoveRange(items);
+            context.SaveChanges();
+        }
+
+        public void UpdateOrderDetail(OrderDetail orderDetail)
+        {
+           context.OrderDetails.Update(orderDetail);
+        }
+
+        public void UpdateOrderHeader(OrderHeader orderHeader)
+        {
+            context.OrderHeaders.Update(orderHeader);
+            context.SaveChanges();
+        }
+
+        public void UpdateOrderHeaderPayment(int id, string sessionId, string paymentIntentId)
+        {
+            var OrderHeader=context.OrderHeaders.FirstOrDefault(o=>o.id==id);
+
+            OrderHeader.paymentDate = DateTime.Now;
+            OrderHeader.sessionId= sessionId;
+            OrderHeader.paymentIntentId=paymentIntentId;
+            context.SaveChanges();
+        }
+
+        public void UpdateOrderHeaderStatus(int id, string OrderStatus, string PaymentStatus)
+        {
+            var OrderHeader=context.OrderHeaders.FirstOrDefault(c=>c.id==id);
+
+            if(OrderHeader != null)
+            {
+                OrderHeader.orderStatus=OrderStatus;
+                if(PaymentStatus!=null) 
+                {
+                    OrderHeader.paymentStatus=PaymentStatus;
+                }
+            }
+
+            context.SaveChanges() ;
         }
     }
 

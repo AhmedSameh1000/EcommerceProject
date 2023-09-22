@@ -21,6 +21,8 @@ namespace InfraStructure.Data
         public DbSet<ProductType> ProductTypes { get; set; }
 
         public DbSet <cartItem> cartItems { get; set; }
+        public DbSet <OrderHeader> OrderHeaders { get; set; }
+        public DbSet <OrderDetail> OrderDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
