@@ -4830,11 +4830,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\Final\\EcommerceProject\\Api\\Core\\Core.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "C:\\Users\\Administrator\\Desktop\\Final\\EcommerceProject\\Api\\Core\\Core.csproj",
+      "projectPath": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Core\\Core.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Desktop\\Final\\EcommerceProject\\Api\\Core\\obj\\",
+      "outputPath": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",

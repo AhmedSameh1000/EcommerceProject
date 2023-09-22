@@ -3,6 +3,7 @@ using Core.DTOs;
 using Core.Interfaces;
 using Core.Models;
 using InfraStructure.Data;
+using InfraStructure.Seeding;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,23 @@ namespace InfraStructure.Repositories
         public void AddOrderHeader(OrderHeader orderHeader)
         {
             context.OrderHeaders.Add(orderHeader);
+            context.SaveChanges();
+        }
+
+        public void AddPaymentPackage(PaymentPackage paymentPackage)
+        {
+            var CurrentPaymentPackage = context.PaymentPackages.FirstOrDefault(c => c.ProductId == paymentPackage.ProductId
+            && c.UserId == paymentPackage.UserId && c.Pending.ToLower() == Constant.StatusPending.ToLower());
+
+            if(CurrentPaymentPackage == null )
+            {
+                context.PaymentPackages.Add(paymentPackage);
+            }
+            else
+            {
+                CurrentPaymentPackage.Count+=paymentPackage.Count;
+                CurrentPaymentPackage.Price += paymentPackage.Price;
+            }
             context.SaveChanges();
         }
 

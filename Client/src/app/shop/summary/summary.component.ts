@@ -14,14 +14,34 @@ export class SummaryComponent implements OnInit{
  }
   currentDateTime = new Date();
 
+  Address:any="";
+  City:any="";
+  PhoneNumber:any="";
+  Name:any=""
+
   ngOnInit(): void {
    this.GetOrder()
  this.currentDateTime.setDate(this.currentDateTime.getDate() + 7);
 
   }
 
-  StartPay(){    
-    this.shopService.StartPay(this.authServic.GetLoggedInUserId()).subscribe({
+  StartPay(){
+    
+    var userData={
+      name:this.Name,
+      address:this.Address,
+      city:this.City,
+      Phone:this.PhoneNumber
+    }
+    if(userData.name==""||
+    userData.address==""||
+    userData.city==""
+    ||userData.Phone==""){
+      return;
+    }
+
+    
+    this.shopService.StartPay(this.authServic.GetLoggedInUserId(),userData).subscribe({
       next:(res:any)=>{ 
        location.href=res.url
       
@@ -38,6 +58,10 @@ export class SummaryComponent implements OnInit{
     .subscribe({
       next:(res:any)=>{
    this.OrderSummary=res
+   this.Name=res.orderHeader.name
+   this.Address=res.orderHeader.city
+   this.City=res.orderHeader.city
+   this.PhoneNumber=res.orderHeader.phoneNumber
    console.log(res)
       }
     })

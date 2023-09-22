@@ -26,7 +26,11 @@
                 </div>
                 <div class="col-9">
                   <input
-                    value="{{ OrderSummary.orderHeader.name }}"
+                    [(ngModel)]="Name"
+                    [ngClass]="{
+                      'is-invalid': !Name
+                    }"
+                    name="Name"
                     class="form-control"
                   />
                 </div>
@@ -37,26 +41,41 @@
                 </div>
                 <div class="col-9">
                   <input
-                    value="{{ OrderSummary.orderHeader.phoneNumber }}"
+                    [ngClass]="{
+                      'is-invalid': !PhoneNumber
+                    }"
+                    [(ngModel)]="PhoneNumber"
+                    name="PhoneNumber"
                     class="form-control"
                   />
                 </div>
               </div>
-              <!-- <div class="row my-1">
+              <div class="row my-1">
                 <div class="col-3">
                   <label>Address</label>
                 </div>
                 <div class="col-9">
-                  <input class="form-control" />
+                  <input
+                    [ngClass]="{
+                      'is-invalid': !Address
+                    }"
+                    [(ngModel)]="Address"
+                    name="City"
+                    class="form-control"
+                  />
                 </div>
-              </div> -->
+              </div>
               <div class="row my-1">
                 <div class="col-3">
                   <label>City</label>
                 </div>
                 <div class="col-9">
                   <input
-                    value="{{ OrderSummary.orderHeader.city }}"
+                    [ngClass]="{
+                      'is-invalid': !City
+                    }"
+                    [(ngModel)]="City"
+                    name="Address"
                     class="form-control"
                   />
                 </div>

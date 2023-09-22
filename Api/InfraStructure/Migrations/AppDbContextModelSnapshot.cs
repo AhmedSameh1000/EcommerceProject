@@ -119,6 +119,68 @@ namespace InfraStructure.Migrations
                     b.ToTable("OrderHeaders");
                 });
 
+            modelBuilder.Entity("Core.Models.PaymentPackage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Brand")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Pending")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReciverId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReciverId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PaymentPackages");
+                });
+
             modelBuilder.Entity("Core.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -456,6 +518,23 @@ namespace InfraStructure.Migrations
                         .IsRequired();
 
                     b.Navigation("user");
+                });
+
+            modelBuilder.Entity("Core.Models.PaymentPackage", b =>
+                {
+                    b.HasOne("Core.Models.User", "Reciver")
+                        .WithMany()
+                        .HasForeignKey("ReciverId");
+
+                    b.HasOne("Core.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Reciver");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Core.Models.Product", b =>

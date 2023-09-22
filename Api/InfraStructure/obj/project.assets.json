@@ -4403,11 +4403,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\Final\\EcommerceProject\\Api\\InfraStructure\\InfraStructure.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\InfraStructure\\InfraStructure.csproj",
       "projectName": "InfraStructure",
-      "projectPath": "C:\\Users\\Administrator\\Desktop\\Final\\EcommerceProject\\Api\\InfraStructure\\InfraStructure.csproj",
+      "projectPath": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\InfraStructure\\InfraStructure.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Desktop\\Final\\EcommerceProject\\Api\\InfraStructure\\obj\\",
+      "outputPath": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\InfraStructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4424,8 +4424,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Administrator\\Desktop\\Final\\EcommerceProject\\Api\\Core\\Core.csproj": {
-              "projectPath": "C:\\Users\\Administrator\\Desktop\\Final\\EcommerceProject\\Api\\Core\\Core.csproj"
+            "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Core\\Core.csproj"
             }
           }
         }

@@ -30,7 +30,8 @@ namespace Core.Interfaces
 
         public void AddOrderHeader(OrderHeader orderHeader);
         public void AddOrderDetail(OrderDetail orderDetail);
-
+        
+        public void AddPaymentPackage(PaymentPackage paymentPackage);
         public OrderHeader GetOrderHeader(int id);
 
 

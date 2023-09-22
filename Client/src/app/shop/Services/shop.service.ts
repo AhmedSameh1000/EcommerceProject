@@ -73,8 +73,8 @@ export class ShopService {
   RemoveCartItem(id:any){
     return this.Http.delete(environment.baseUrl+"CartItem/Remove/"+id)
   }
-  StartPay(userid:any){
-    return this.Http.post(environment.baseUrl+"CartItem/SummaryPost/"+userid,{})
+  StartPay(userid:any,userData:any){
+    return this.Http.post(environment.baseUrl+"CartItem/SummaryPost/"+userid,userData)
   }
 
   public summaryGet(userId:any){

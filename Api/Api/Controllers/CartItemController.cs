@@ -58,49 +58,6 @@ namespace Api.Controllers
 
         }
 
-
-        //[HttpGet("StartPay/{price}/{cartId}")]
-        //public IActionResult CreateCheckoutSession(string price,int cartId)
-        //{
-
-        //    var currency = "usd";
-        //    var successUrl = "http://localhost:4200/CartItem";
-        //    var CancelUrl = "http://localhost:4200/CartItem";
-
-        //    var Option = new SessionCreateOptions()
-        //    {
-        //        PaymentMethodTypes = new List<string>()
-        //        {
-        //            "card"
-        //        },
-        //        LineItems = new List<SessionLineItemOptions>()
-        //        {
-
-        //            new SessionLineItemOptions()
-        //            {
-        //                PriceData = new SessionLineItemPriceDataOptions()
-        //                {
-        //                    Currency = currency,
-        //                    UnitAmount = Convert.ToInt32(price) * 100,
-        //                    ProductData = new SessionLineItemPriceDataProductDataOptions()
-        //                    {
-        //                        Name = "Ahmeds Product Name ",
-        //                        Description = "Ahmeds Product Description",
-        //                    },
-        //                },
-        //                Quantity = 1 ,
-        //            }
-        //        },
-
-        //        Mode = "payment",
-        //        SuccessUrl = successUrl,
-        //        CancelUrl = CancelUrl
-        //    };
-        //    var Service = new SessionService();
-        //    var session = Service.Create(Option);
-        //    Console.WriteLine(session.PaymentStatus);
-        //    return Ok(session);
-        //}
         [HttpGet("SummaryGet/{userId}")]
         public IActionResult Summary(string userId)
         {
@@ -131,12 +88,12 @@ namespace Api.Controllers
 
 
         [HttpPost("SummaryPost/{userId}")]
-        public IActionResult SummaryPost(string userId)
+        public IActionResult SummaryPost([FromBody]userData userData, string userId)
         {
             var cartDto = new CartDto();
             var OrderHeader = new OrderHeader();
-            cartDto.orderHeader= OrderHeader;   
-
+            cartDto.orderHeader= OrderHeader;
+            var User = userManager.FindByIdAsync(userId).Result;
             cartDto.CartItems = cartItemRepository.GetAll(userId).Result;
 
 
@@ -144,7 +101,12 @@ namespace Api.Controllers
             cartDto.orderHeader.orderStatus = Constant.StatusPending;
             cartDto.orderHeader.orderDate = DateTime.Now;
             cartDto.orderHeader.userId = userId;
+            cartDto.orderHeader.phoneNumber = userData.Phone;
+            cartDto.orderHeader.streetAddress = userData.address;
+            cartDto.orderHeader.city = userData.city;
+            cartDto.orderHeader.name = userData.name;
 
+            
             foreach (var item in cartDto.CartItems)
             {
                 cartDto.cartTotal += (double)(item.product.Price * item.count);
@@ -214,6 +176,7 @@ namespace Api.Controllers
         public async Task<IActionResult> OrderConfirmation([FromQuery]int id)
         {
             var OrderHeader = cartItemRepository.GetOrderHeader(id);
+            var User = userManager.FindByIdAsync(OrderHeader.userId).Result;
             var service = new SessionService();
             Session session = service.Get(OrderHeader.sessionId);
 
@@ -223,6 +186,28 @@ namespace Api.Controllers
             }
 
             var CartItems = await cartItemRepository.GetAll(OrderHeader.userId);
+
+            foreach (var cartItem in CartItems)
+            {
+                var PaymentPackage = new PaymentPackage()
+                {
+                    Address=OrderHeader.streetAddress,
+                    Brand=cartItem.product.ProductBrand.Name,
+                    Type=cartItem.product.productType.Name,
+                    Count=cartItem.count,
+                    Description=cartItem.product.Description,
+                    Name=cartItem.product.Name,
+                    PhoneNumber=OrderHeader.phoneNumber,
+                    Price=(cartItem.product.Price*cartItem.count),
+                    ProductImage=cartItem.product.URL,
+                    UserId=User.Id, 
+                    Pending=Constant.StatusPending.ToLower(),
+                    ProductId=cartItem.productId,
+                    UserName=OrderHeader.name,
+                    
+                };
+                cartItemRepository.AddPaymentPackage(PaymentPackage);
+            }
 
             cartItemRepository.RemoveRange(CartItems);
             return Ok(id);   

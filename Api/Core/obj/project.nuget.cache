@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "t5MDzI0wdofa3olxDPd1LTCyH8F4aIjoLRnL3OWbb1i7jYj0fN0wdGHyBKJIs43yETlyLPZQxLei3Yvsmdiz3Q==",
+  "dgSpecHash": "0rIcN1gA0/wFqH2ugNd+hPaXiUV2GgbRkoN9Dt1BDOHssOeD64yNge4YrNNVt1/v/bXnToRjErDHmRufhP6R5g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\Final\\EcommerceProject\\Api\\Core\\Core.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Core\\Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

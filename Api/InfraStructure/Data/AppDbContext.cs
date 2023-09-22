@@ -23,6 +23,7 @@ namespace InfraStructure.Data
         public DbSet <cartItem> cartItems { get; set; }
         public DbSet <OrderHeader> OrderHeaders { get; set; }
         public DbSet <OrderDetail> OrderDetails { get; set; }
+        public DbSet <PaymentPackage>  PaymentPackages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
