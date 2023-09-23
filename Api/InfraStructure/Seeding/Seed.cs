@@ -42,6 +42,7 @@ namespace InfraStructure.Seeding
                 await roleManager.CreateAsync(new IdentityRole(Constant.Admin));
                 await roleManager.CreateAsync(new IdentityRole(Constant.Moderator));
                 await roleManager.CreateAsync(new IdentityRole(Constant.User));
+                await roleManager.CreateAsync(new IdentityRole(Constant.Reciver));
                 var admin = new User()
                 {
                     FirstName = "Ahmed",
@@ -59,6 +60,7 @@ namespace InfraStructure.Seeding
                     await userManager.AddToRoleAsync(admin, Constant.Admin);
                     await userManager.AddToRoleAsync(admin, Constant.Moderator);
                     await userManager.AddToRoleAsync(admin, Constant.User);
+                    await userManager.AddToRoleAsync(admin, Constant.Reciver);
                 }
             }
       

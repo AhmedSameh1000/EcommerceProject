@@ -41,6 +41,16 @@
         <li class="nav-item pointer">
           <a routerLinkActive="active" routerLink="/Contact">Contact</a>
         </li>
+        <li
+          class="nav-item pointer"
+          *ngIf="
+            AuthService.isAdmin() ||
+            AuthService.isModerator() ||
+            AuthService.isReciver()
+          "
+        >
+          <a routerLinkActive="active" routerLink="/Orders">Orders</a>
+        </li>
         <li *ngIf="AuthService.isModerator()" class="nav-item pointer">
           <div routerLinkActive="active" class="btn-group" dropdown>
             <div

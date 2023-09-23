@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "I1ybFaY+iImQXfxQUtW8Mt/LrlVv21JoiZXKHnTTRMg=",
+  "Hash": "iLpLAMGb9i1a2tOKpjF8N1qKSmXabKM1p2RfOSOEqag=",
   "Source": "Api",
   "BasePath": "_content/Api",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\0427b05c-c25a-4aa1-b5a4-acca31b9df14.jpg",
+      "SourceId": "Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Api\\wwwroot\\",
+      "BasePath": "_content/Api",
+      "RelativePath": "Images/0427b05c-c25a-4aa1-b5a4-acca31b9df14.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\0427b05c-c25a-4aa1-b5a4-acca31b9df14.jpg"
+    },
     {
       "Identity": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\04d4d5f6-a1fb-4dcf-9a64-36260aa598fe.jpg",
       "SourceId": "Api",
@@ -100,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\4716de93-635a-4a9c-b11e-d25426cdef21.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\714c79dd-6303-46df-9704-04a56a65584d.jpg",
+      "SourceId": "Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Api\\wwwroot\\",
+      "BasePath": "_content/Api",
+      "RelativePath": "Images/714c79dd-6303-46df-9704-04a56a65584d.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\714c79dd-6303-46df-9704-04a56a65584d.jpg"
     },
     {
       "Identity": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\86493ca7-de0c-4d7f-b480-ed863b989d9e.jpg",

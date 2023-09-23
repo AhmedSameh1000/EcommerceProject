@@ -23,9 +23,7 @@ namespace Core.Interfaces
 
         public void UpdateOrderHeaderStatus(int id, string OrderStatus,string PaymentStatus);
         public void UpdateOrderHeaderPayment(int id, string sessionId,string paymentIntentId);
-         
-
-
+        public List<UserDataWithPackageData> userDataWithpackageData();
         public void UpdateOrderDetail(OrderDetail orderDetail);
 
         public void AddOrderHeader(OrderHeader orderHeader);
@@ -34,6 +32,10 @@ namespace Core.Interfaces
         public void AddPaymentPackage(PaymentPackage paymentPackage);
         public OrderHeader GetOrderHeader(int id);
 
+        public List<PaymentPackage> GetPaymentPackagesByUserId(string  userId);
+
+        public void StartProcessing(string userId,string reciverId);
+        public void CompleteTask(string userId, string reciverId);
 
 
 
@@ -41,6 +43,7 @@ namespace Core.Interfaces
 
     
     
+
 
     
     

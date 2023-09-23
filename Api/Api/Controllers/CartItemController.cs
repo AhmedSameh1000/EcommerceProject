@@ -38,8 +38,23 @@ namespace Api.Controllers
             return Ok(cartItemDTO);
         }
 
+        [HttpGet("StartProcessing/{userId}/{ReciverId}")]
+        public IActionResult StartProcessing(string userId, string ReciverId)
+        {
+            cartItemRepository.StartProcessing(userId,ReciverId);
+            return Ok();
+        }
+               
+        [HttpGet("CompleteProcessing/{userId}/{ReciverId}")]
+        public IActionResult CompleteProcessing(string userId, string ReciverId)
+        {
+            cartItemRepository.CompleteTask(userId,ReciverId);
+            return Ok();
+        }
+
+
+
         [HttpGet("GetCartItems/{id}")]
-        
         public async Task<IActionResult> GetCartItems(string id)
         {
 
@@ -57,6 +72,21 @@ namespace Api.Controllers
             return Ok(cartDto);
 
         }
+        [HttpGet("GetUserPackegs/{id}")]
+        public IActionResult GetUserPackegs(string id)
+        {
+            var Packages=cartItemRepository.GetPaymentPackagesByUserId(id);
+            return Ok(Packages);
+        }
+
+        [HttpGet("userDataWithpackageData")]
+        public IActionResult PaymentPackages()
+        {
+            var Packges = cartItemRepository.userDataWithpackageData();
+            return Ok(Packges);
+        }
+
+
 
         [HttpGet("SummaryGet/{userId}")]
         public IActionResult Summary(string userId)

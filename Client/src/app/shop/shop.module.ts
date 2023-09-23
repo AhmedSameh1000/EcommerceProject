@@ -12,6 +12,8 @@ import { CartItemComponent } from './cart-item/cart-item.component';
 import { SummaryComponent } from './summary/summary.component';
 import { SuccessPaymentPageComponent } from './success-payment-page/success-payment-page.component';
 import { FailurePaymentPageComponent } from './failure-payment-page/failure-payment-page.component';
+import { OrdersComponent } from './orders/orders.component';
+import { UserOrdersComponent } from './user-orders/user-orders.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { FailurePaymentPageComponent } from './failure-payment-page/failure-paym
     CartItemComponent,
     SummaryComponent,
     SuccessPaymentPageComponent,
-    FailurePaymentPageComponent
+    FailurePaymentPageComponent,
+    OrdersComponent,
+    UserOrdersComponent
   ],
   imports: [
     CommonModule,

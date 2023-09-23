@@ -6,6 +6,7 @@ import { CartItemComponent } from './cart-item/cart-item.component';
 import { SummaryComponent } from './summary/summary.component';
 import { FailurePaymentPageComponent } from './failure-payment-page/failure-payment-page.component';
 import { SuccessPaymentPageComponent } from './success-payment-page/success-payment-page.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path:"failurePaymentPage",
     component:FailurePaymentPageComponent
+  },
+  {
+    path:"Orders",
+    component:OrdersComponent
   },
   
 ];

@@ -11,13 +11,13 @@ namespace InfraStructure.Seeding
         public static string Admin => "Admin";
         public static string User => "User";
         public static string Moderator => "Moderator";
-
-
-
+        public static string Reciver => "Reciver";
 
         public const string StatusPending = "Pending";
+        public const string StatusRecived = "Recived";
         public const string StatusApproved = "Approved";
         public const string StatusInProcess = "Processing";
+        public const string StatusCompleted = "Completed";
         public const string StatusShipped = "Shipped";
         public const string StatusCancelled = "Cancelled";
         public const string StatusRefunded = "Refunded";
@@ -30,3 +30,4 @@ namespace InfraStructure.Seeding
     }
 
 }
+

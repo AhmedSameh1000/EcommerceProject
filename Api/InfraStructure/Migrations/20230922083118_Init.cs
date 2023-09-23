@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InfraStructure.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -220,6 +220,43 @@ namespace InfraStructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PaymentPackages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Brand = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    ProductImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Count = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ReciverId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Pending = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PaymentPackages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PaymentPackages_AspNetUsers_ReciverId",
+                        column: x => x.ReciverId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_PaymentPackages_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
@@ -369,6 +406,16 @@ namespace InfraStructure.Migrations
                 column: "userId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PaymentPackages_ReciverId",
+                table: "PaymentPackages",
+                column: "ReciverId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PaymentPackages_UserId",
+                table: "PaymentPackages",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_ProductBrandId",
                 table: "Products",
                 column: "ProductBrandId");
@@ -402,6 +449,9 @@ namespace InfraStructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "OrderDetails");
+
+            migrationBuilder.DropTable(
+                name: "PaymentPackages");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

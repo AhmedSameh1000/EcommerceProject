@@ -97,6 +97,26 @@ namespace InfraStructure.Repositories
             return context.OrderHeaders.FirstOrDefault(c => c.id == id);
         }
 
+        public List<UserDataWithPackageData> userDataWithpackageData()
+        {
+            var UserData= context.PaymentPackages.Where(c=>c.Pending!=Constant.StatusCompleted).Select(c=>new UserDataWithPackageData()
+            {
+                userId=c.UserId,
+                Address=c.Address,
+                Count=c.Count.ToString(),
+                OrderStatus = c.Pending,
+                phoneNumber=c.PhoneNumber,
+                Price=c.Price.Value,
+                UserName = c.UserName,
+                reciverId=c.ReciverId,
+            }).AsEnumerable()
+              .DistinctBy(c=>c.userId)
+              .ToList();
+
+            return UserData;
+        }
+
+
         public void IncrementCartItem(int id)
         {
             var cartItem = context.cartItems.Find(id);
@@ -159,6 +179,37 @@ namespace InfraStructure.Repositories
 
             context.SaveChanges() ;
         }
+
+        public List<PaymentPackage> GetPaymentPackagesByUserId(string userId)
+        {
+           var PaymentPackages=context.PaymentPackages.Where(c=>c.UserId==userId&& c.Pending!=Constant.StatusCompleted).ToList();
+            return PaymentPackages;
+        }
+
+        public void StartProcessing(string userId,string reciverId)
+        {
+            var PaymentPackages = context.PaymentPackages.Where(c => c.UserId == userId && c.Pending.ToLower() == Constant.StatusPending.ToLower()).ToList();
+
+            foreach (var Package in PaymentPackages)
+            {
+                Package.Pending=Constant.StatusInProcess.ToLower();
+                Package.ReciverId= reciverId;
+                context.SaveChanges();
+            }
+        
+        }
+
+        public void CompleteTask(string userId, string reciverId)
+        {
+            var PaymentPackages = context.PaymentPackages.Where(c => c.UserId == userId && c.Pending.ToLower() == Constant.StatusInProcess.ToLower()).ToList();
+
+            foreach (var Package in PaymentPackages)
+            {
+                Package.Pending = Constant.StatusCompleted.ToLower();
+                context.SaveChanges();
+            }
+        }
     }
+
 
 }

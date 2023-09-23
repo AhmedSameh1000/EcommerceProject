@@ -69,5 +69,17 @@ export class AuthService {
       return false;
     }
   }
+  isReciver(){
+    if(!this.IsLogIn())
+    return;
+    var token=this.GetToken();
+    var TokeneData=this.JWTHealper.decodeToken(token!).roles as string[];
+    if(TokeneData.includes('Reciver')){
+      return true
+    }
+    else  {
+      return false;
+    }
+  }
 
 }

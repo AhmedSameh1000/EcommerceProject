@@ -1,0 +1,80 @@
+<div class="row mt-4">
+  <div class="col-12 col-lg-4">
+    <div _ngcontent-ng-c1473217267="" class="mb-5">
+      <ul
+        _ngcontent-ng-c1473217267=""
+        data-bs-theme="light"
+        class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px"
+      >
+        <li _ngcontent-ng-c1473217267="">
+          <a
+            _ngcontent-ng-c1473217267=""
+            href="#"
+            class="btn btn-primary w-100 text-start fs-3 rounded-2 active"
+            >Status</a
+          >
+        </li>
+        <li _ngcontent-ng-c1473217267="" #list>
+          <a
+            #current
+            (click)="GetOrdersWithStatus(current, list)"
+            [ngClass]="{ active: State == 'All' }"
+            *ngFor="let State of Status"
+            _ngcontent-ng-c1473217267=""
+            class="mt-2 dropdown-item rounded-2 pointer ng-star-inserted"
+            ng-reflect-ng-class="[object Object]"
+            >{{ State }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div
+    class="col-12 col-lg-8 container-fluid row gap-3 justify-content-center"
+    *ngIf="Orders"
+  >
+    <div class="card col-12 col-md-6" *ngFor="let Order of Orders">
+      <div
+        style="cursor: pointer; position: relative"
+        class="top-section text-center justify-content-center h1"
+        (click)="OpenDialog(Order.userId)"
+      >
+        New Order
+        <div
+          *ngIf="Order.reciverId == authservice.GetLoggedInUserId()"
+          class="btn btn-success position-absolute"
+          style="width: 100px; top: 2px; right: 6px"
+        >
+          For You
+        </div>
+        <div
+          *ngIf="
+            Order.reciverId != authservice.GetLoggedInUserId() &&
+            Order.reciverId != null
+          "
+          class="btn btn-secondary position-absolute"
+          style="width: 100px; top: 2px; right: 6px"
+        >
+          For other
+        </div>
+      </div>
+      <div class="bottom-section">
+        <span class="title">{{ Order.phoneNumber }}</span>
+        <div class="row row1">
+          <div class="item">
+            <span class="big-text">{{ Order.userName }}</span>
+          </div>
+          <div class="item">
+            <span class="big-text">{{ Order.orderStatus }}....</span>
+            <span class="regular-text">{{ Order.price | currency }}</span>
+          </div>
+          <div class="item">
+            <span class="big-text">{{ Order.count }} Pecies</span>
+            <span class="regular-text">{{ Order.address }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

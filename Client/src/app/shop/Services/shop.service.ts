@@ -14,7 +14,6 @@ import { environment } from 'src/environments/environment.development';
 })
 export class ShopService {
   constructor(private Http:HttpClient) { }
-
   GetProducts(AllParams:params):Observable<Pagination<Product[]>>{
    let params=new HttpParams();
    if(AllParams.brandIdSelected)
@@ -85,6 +84,19 @@ export class ShopService {
   }
   public OrderConfirmation(id:any){
     return this.Http.get(environment.baseUrl+`CartItem/OrderConfirmation?id=${id}`)
+  }
+  public GetPackges(){
+    return this.Http.get(environment.baseUrl+`CartItem/userDataWithpackageData`)
+  }
+  public GetUSerPackagesById(id:any){
+    return this.Http.get(environment.baseUrl+"CartItem/GetUserPackegs/"+id)
+  }
+
+  public startProcessing(userId:any,reciverId:any){
+    return this.Http.get(environment.baseUrl+"CartItem/StartProcessing/"+userId+"/"+reciverId)
+  }
+  public CompleteProcessing(userId:any,reciverId:any){
+    return this.Http.get(environment.baseUrl+"CartItem/CompleteProcessing/"+userId+"/"+reciverId)
   }
 }
 

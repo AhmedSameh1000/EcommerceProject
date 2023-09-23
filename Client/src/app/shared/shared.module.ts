@@ -10,6 +10,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import {MatCardModule} from '@angular/material/card';
 
 let _shardModulese=[
 
@@ -24,7 +25,8 @@ let _shardModulese=[
   MatDialogModule,
   MatSelectModule,
   MatFormFieldModule,
-  BsDropdownModule.forRoot()
+  BsDropdownModule.forRoot(),
+  MatCardModule
 ]
 
 @NgModule({
