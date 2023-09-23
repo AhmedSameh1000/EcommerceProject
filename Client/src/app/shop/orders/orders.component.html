@@ -1,35 +1,5 @@
 <div class="row mt-4">
-  <div class="col-12 col-lg-4">
-    <div _ngcontent-ng-c1473217267="" class="mb-5">
-      <ul
-        _ngcontent-ng-c1473217267=""
-        data-bs-theme="light"
-        class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px"
-      >
-        <li _ngcontent-ng-c1473217267="">
-          <a
-            _ngcontent-ng-c1473217267=""
-            href="#"
-            class="btn btn-primary w-100 text-start fs-3 rounded-2 active"
-            >Status</a
-          >
-        </li>
-        <li _ngcontent-ng-c1473217267="" #list>
-          <a
-            #current
-            (click)="GetOrdersWithStatus(current, list)"
-            [ngClass]="{ active: State == 'All' }"
-            *ngFor="let State of Status"
-            _ngcontent-ng-c1473217267=""
-            class="mt-2 dropdown-item rounded-2 pointer ng-star-inserted"
-            ng-reflect-ng-class="[object Object]"
-            >{{ State }}</a
-          >
-        </li>
-      </ul>
-    </div>
-  </div>
-
+  <div class="h1 text-center" *ngIf="NoOrdersYet">No Orders Yet</div>
   <div
     class="col-12 col-lg-8 container-fluid row gap-3 justify-content-center"
     *ngIf="Orders"
@@ -70,7 +40,6 @@
             <span class="regular-text">{{ Order.price | currency }}</span>
           </div>
           <div class="item">
-            <span class="big-text">{{ Order.count }} Pecies</span>
             <span class="regular-text">{{ Order.address }}</span>
           </div>
         </div>

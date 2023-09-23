@@ -99,14 +99,17 @@ namespace InfraStructure.Repositories
 
         public List<UserDataWithPackageData> userDataWithpackageData()
         {
+            
+
+            var TotalPrice= context.PaymentPackages.Where(c => c.Pending != Constant.StatusCompleted).Select(c=>c.Price).ToList();
+            var CurrntTotlaPrice = TotalPrice.Sum();
             var UserData= context.PaymentPackages.Where(c=>c.Pending!=Constant.StatusCompleted).Select(c=>new UserDataWithPackageData()
             {
                 userId=c.UserId,
                 Address=c.Address,
-                Count=c.Count.ToString(),
                 OrderStatus = c.Pending,
                 phoneNumber=c.PhoneNumber,
-                Price=c.Price.Value,
+                Price= CurrntTotlaPrice.Value,
                 UserName = c.UserName,
                 reciverId=c.ReciverId,
             }).AsEnumerable()

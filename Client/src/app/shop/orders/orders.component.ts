@@ -13,8 +13,10 @@ export class OrdersComponent implements OnInit {
   constructor (private shopService:ShopService,
     private MatDialog:MatDialog,public authservice:AuthService){
       this.Status=["All","Pending","Processing","Completed"]
+     
   }
 
+  NoOrdersYet:boolean=true
   Status:any[];
   StatSelected="All"
   ngOnInit(): void {
@@ -26,6 +28,7 @@ export class OrdersComponent implements OnInit {
     this.shopService.GetPackges().subscribe({
       next:(res)=>{
         this.Orders=res
+        this.NoOrdersYet=this.Orders.length<=0?true:false
         console.log(res)
       }
     })
