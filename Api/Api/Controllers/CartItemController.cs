@@ -53,6 +53,15 @@ namespace Api.Controllers
         }
 
 
+        [HttpGet("GetOrdersById/{userId}")]
+        public IActionResult GetOrdersByid(string userId)
+        {
+            var Orders=cartItemRepository.GetOrdersByUserId(userId);
+            return Ok(Orders);
+        }
+
+
+
 
         [HttpGet("GetCartItems/{id}")]
         public async Task<IActionResult> GetCartItems(string id)

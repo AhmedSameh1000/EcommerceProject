@@ -1,0 +1,24 @@
+<div class="container-fluid mt-3" *ngIf="completedOrders">
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr class="text-center">
+        <th scope="col">Name</th>
+        <th scope="col">count</th>
+        <th scope="col">address</th>
+        <th scope="col">price</th>
+        <th scope="col">Total</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let Order of completedOrders">
+        <td>{{ Order.userName }}</td>
+        <td>{{ Order.count }}</td>
+        <td>{{ Order.address }}</td>
+        <td>{{ Order.price }}</td>
+        <td>{{ Order.price * Order.count }}</td>
+        <td>{{ Order.orderStatus }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -38,8 +38,8 @@
           <a routerLinkActive="active" routerLink="/Products">Shop</a>
         </li>
 
-        <li class="nav-item pointer">
-          <a routerLinkActive="active" routerLink="/Contact">Contact</a>
+        <li class="nav-item pointer mb-3" *ngIf="AuthService.IsLogIn()">
+          <a routerLinkActive="active" routerLink="/MyOrders">MyOrders</a>
         </li>
         <li
           class="nav-item pointer"
@@ -94,7 +94,11 @@
         </li>
       </ul>
       <ul class="navbar-nav gap-3">
-        <li routerLink="CartItem" class="nav-item m-lg-auto fs-1 pointer">
+        <li
+          *ngIf="AuthService.IsLogIn()"
+          routerLink="CartItem"
+          class="nav-item m-lg-auto fs-1 pointer"
+        >
           <i class="fa-solid fa-cart-shopping"></i>
         </li>
         <li

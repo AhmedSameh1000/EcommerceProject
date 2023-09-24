@@ -7,6 +7,8 @@ import { SummaryComponent } from './summary/summary.component';
 import { FailurePaymentPageComponent } from './failure-payment-page/failure-payment-page.component';
 import { SuccessPaymentPageComponent } from './success-payment-page/success-payment-page.component';
 import { OrdersComponent } from './orders/orders.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { isloginGuard } from '../Guards/islogin.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +17,8 @@ const routes: Routes = [
   },
   {
     path:"Products/:id",
-    component:ProductDetailsComponent
+    component:ProductDetailsComponent,
+    canActivate:[isloginGuard]
   },
   {
     path:"CartItem",
@@ -36,6 +39,11 @@ const routes: Routes = [
   {
     path:"Orders",
     component:OrdersComponent
+  },
+  {
+    path:"MyOrders",
+    component:MyOrdersComponent,
+    canActivate:[isloginGuard]
   },
   
 ];

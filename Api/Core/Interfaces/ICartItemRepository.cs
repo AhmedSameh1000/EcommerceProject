@@ -11,43 +11,32 @@ namespace Core.Interfaces
 {
     public interface ICartItemRepository
     {
-        public void Add(CartItemToAdd cartItem);
+         void Add(CartItemToAdd cartItem);
 
-        public Task<List<cartItem>> GetAll(string userId);
-        public void IncrementCartItem(int id);
-        public void DecrementCartItem(int id);
-        public void RemoveCartItem(int id);
+         Task<List<cartItem>> GetAll(string userId);
+         void IncrementCartItem(int id);
+         void DecrementCartItem(int id);
+         void RemoveCartItem(int id);
 
-        public void RemoveRange(List<cartItem> items);
-        public void UpdateOrderHeader(OrderHeader orderHeader);
+         void RemoveRange(List<cartItem> items);
+         void UpdateOrderHeader(OrderHeader orderHeader);
 
-        public void UpdateOrderHeaderStatus(int id, string OrderStatus,string PaymentStatus);
-        public void UpdateOrderHeaderPayment(int id, string sessionId,string paymentIntentId);
-        public List<UserDataWithPackageData> userDataWithpackageData();
-        public void UpdateOrderDetail(OrderDetail orderDetail);
+         void UpdateOrderHeaderStatus(int id, string OrderStatus,string PaymentStatus);
+         void UpdateOrderHeaderPayment(int id, string sessionId,string paymentIntentId);
+         List<UserDataWithPackageData> userDataWithpackageData();
+         void UpdateOrderDetail(OrderDetail orderDetail);
 
-        public void AddOrderHeader(OrderHeader orderHeader);
-        public void AddOrderDetail(OrderDetail orderDetail);
+         void AddOrderHeader(OrderHeader orderHeader);
+         void AddOrderDetail(OrderDetail orderDetail);
         
-        public void AddPaymentPackage(PaymentPackage paymentPackage);
-        public OrderHeader GetOrderHeader(int id);
+         void AddPaymentPackage(PaymentPackage paymentPackage);
+         OrderHeader GetOrderHeader(int id);
 
-        public List<PaymentPackage> GetPaymentPackagesByUserId(string  userId);
+         List<PaymentPackage> GetPaymentPackagesByUserId(string  userId);
 
-        public void StartProcessing(string userId,string reciverId);
-        public void CompleteTask(string userId, string reciverId);
-
-
-
-
-
-    
-    
-
-
-    
-    
-    
+         void StartProcessing(string userId,string reciverId);
+         void CompleteTask(string userId, string reciverId);
+         List<UserDataWithPackageData> GetOrdersByUserId(string userId);
     }
 
 

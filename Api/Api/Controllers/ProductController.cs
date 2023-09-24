@@ -4,6 +4,7 @@ using Core.DTOs;
 using Core.Interfaces;
 using Core.Models;
 using InfraStructure.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -11,19 +12,23 @@ namespace Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : BaseApiController
+    [Authorize(Roles = "Admin")]
+    public class ProductController : ControllerBase
     {
         private readonly ProductRepository productRepository;
         private readonly IMapper mapper;
+        private readonly IReviewRepository reviewRepository;
 
         public ProductController(
             ProductRepository productRepository,
-            IMapper mapper
+            IMapper mapper,
+            IReviewRepository reviewRepository
             )
         {
 
             this.productRepository = productRepository;
             this.mapper = mapper;
+            this.reviewRepository = reviewRepository;
         }
 
 
@@ -75,6 +80,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("Products")]
+        
         public async Task<IActionResult> GetProducts([FromQuery] PaginationParams? param)
         {
             var ProductPagination = await productRepository.GetProductsAsync(param);
@@ -87,7 +93,8 @@ namespace Api.Controllers
             await productRepository.DeleteProductAsync(id);
             return Ok();
         }
-        [HttpGet("ProductsImages")] 
+        [HttpGet("ProductsImages")]
+        
         public async Task<IActionResult> GetProductsImages()
         {
             var Images=await productRepository.GetImagesForSomeProducts();
@@ -102,6 +109,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("{id}")]
+        
         public async Task<IActionResult> GetProduct(int id)
         {
             var ProductCartItem = await productRepository.GetProductByIdAsync(id);
@@ -109,14 +117,33 @@ namespace Api.Controllers
         }
 
         [HttpGet("Types")]
+        
         public async Task<IActionResult> GetProductTypes()
         {
             return Ok(await productRepository.GetProductTypesAsync());
         }
+
+        
         [HttpGet("Brands")]
         public async Task<IActionResult> GetProductBrands()
         {
             return Ok(await productRepository.GetProductBrandsAsync());
+        } 
+        [HttpPost("AddReview")]
+        
+
+        public IActionResult AddReview(Review review)
+        {
+            reviewRepository.AddReview(review);
+            return Ok();
+        }
+        [HttpGet("Reviews/{id}")]
+        
+
+        public IActionResult GetReviews(int id)
+        {
+           var Reviews= reviewRepository.GetReviews(id);
+            return Ok(Reviews);
         }
     }
 }

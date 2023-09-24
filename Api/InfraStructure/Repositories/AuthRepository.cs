@@ -48,6 +48,7 @@ namespace InfraStructure.Repositories
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim("userName", user.FirstName+" "+user.LastName),
                 new Claim("uid", user.Id)
             }
             .Union(userClaims)
@@ -59,7 +60,8 @@ namespace InfraStructure.Repositories
                 issuer: _jwt.Issuer,
                 audience: _jwt.Audience,
                 claims: claims,           
-                signingCredentials: signingCredentials);
+                signingCredentials: signingCredentials
+                );
 
             return jwtSecurityToken;
         }

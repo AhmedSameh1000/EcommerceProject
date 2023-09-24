@@ -72,7 +72,9 @@ builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IInitializer, Initializer>();
 builder.Services.AddScoped<IUserRepository,UserRepository>();
 builder.Services.AddScoped<ICartItemRepository,CartItemRepository>();
+builder.Services.AddScoped<IReviewRepository,ReviewRepository>();
 var app = builder.Build();
+
 app.UseStaticFiles();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

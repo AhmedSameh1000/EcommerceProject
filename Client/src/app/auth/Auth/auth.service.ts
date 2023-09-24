@@ -29,6 +29,8 @@ export class AuthService {
       return
     }
     var token=localStorage.getItem("token");
+
+
     return token;
   }
   LogOut(){
@@ -48,6 +50,13 @@ export class AuthService {
     else  {
       return false;
     }
+  }
+  GetUserName(){
+    if(!this.IsLogIn())
+    return;
+    var token=this.GetToken();
+    var userName=this.JWTHealper.decodeToken(token!).userName as string;
+    return userName;
   }
 
   GetLoggedInUserId(){

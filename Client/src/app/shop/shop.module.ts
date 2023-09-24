@@ -14,6 +14,9 @@ import { SuccessPaymentPageComponent } from './success-payment-page/success-paym
 import { FailurePaymentPageComponent } from './failure-payment-page/failure-payment-page.component';
 import { OrdersComponent } from './orders/orders.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { ReviewComponent } from './review/review.component';
+import { ProductReviewComponent } from './product-review/product-review.component';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { UserOrdersComponent } from './user-orders/user-orders.component';
     SuccessPaymentPageComponent,
     FailurePaymentPageComponent,
     OrdersComponent,
-    UserOrdersComponent
+    UserOrdersComponent,
+    MyOrdersComponent,
+    ReviewComponent,
+    ProductReviewComponent
   ],
   imports: [
     CommonModule,

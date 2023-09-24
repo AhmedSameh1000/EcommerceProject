@@ -98,6 +98,15 @@ export class ShopService {
   public CompleteProcessing(userId:any,reciverId:any){
     return this.Http.get(environment.baseUrl+"CartItem/CompleteProcessing/"+userId+"/"+reciverId)
   }
+  public GetOrders(userId:any){
+    return this.Http.get(environment.baseUrl+"CartItem/GetOrdersById/"+userId)
+  }
+  public AddReview(Review:any){
+    return this.Http.post(environment.baseUrl+"Product/AddReview",Review)
+  }
+  public GetReviews(id:any){
+    return this.Http.get(environment.baseUrl+"Product/Reviews/"+id)
+  }
 }
 
 

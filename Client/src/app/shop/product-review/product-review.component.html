@@ -1,0 +1,32 @@
+<div class="container-fluid p-3" *ngIf="Reviews">
+  <h1>Product Reviews</h1>
+  <div class="row" *ngFor="let Review of Reviews">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Reviewer Name: {{ Review.userName }}</h5>
+          <p class="card-text strong">Comment : {{ Review.reviewText }}</p>
+          <div class="form-control">
+            <h2>Rate</h2>
+            <div>
+              <rating
+                [readonly]="true"
+                [max]="5"
+                name="startCount"
+                [(ngModel)]="Review.reviewStarts"
+                [customTemplate]="tt"
+              ></rating>
+              <ng-template #tt let-i="index" let-v="value">
+                <button class="btn btn-{{ i < v ? 'warning' : 'default' }}">
+                  {{ i < v ? "&#9733;" : "&#9734;" }}
+                </button>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- You can copy and paste this code to add additional reviews -->
+  </div>
+  <button class="btn btn-danger mt-3" (click)="Close()">Close</button>
+</div>

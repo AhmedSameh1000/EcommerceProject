@@ -37,10 +37,22 @@
           style="cursor: pointer; font-size: 2em"
         ></i>
         <button
-          class="btn btn-outline-secondary ms-4"
+          class="btn btn-outline-success ms-4"
           (click)="SaveCartItem(inp)"
         >
           Add To Cart
+        </button>
+        <button
+          (click)="OpenReviewComponent()"
+          class="btn btn-outline-secondary ms-4"
+        >
+          Add Review
+        </button>
+        <button
+          (click)="OpenReviewsForProduct()"
+          class="btn btn-outline-danger ms-4"
+        >
+          Reviews
         </button>
       </div>
       <div class="mt-4">

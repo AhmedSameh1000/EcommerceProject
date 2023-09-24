@@ -24,6 +24,8 @@ namespace InfraStructure.Data
         public DbSet <OrderHeader> OrderHeaders { get; set; }
         public DbSet <OrderDetail> OrderDetails { get; set; }
         public DbSet <PaymentPackage>  PaymentPackages { get; set; }
+        public DbSet <Review>  Reviews { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -98,9 +98,7 @@ namespace InfraStructure.Repositories
         }
 
         public List<UserDataWithPackageData> userDataWithpackageData()
-        {
-            
-
+        {  
             var TotalPrice= context.PaymentPackages.Where(c => c.Pending != Constant.StatusCompleted).Select(c=>c.Price).ToList();
             var CurrntTotlaPrice = TotalPrice.Sum();
             var UserData= context.PaymentPackages.Where(c=>c.Pending!=Constant.StatusCompleted).Select(c=>new UserDataWithPackageData()
@@ -212,7 +210,12 @@ namespace InfraStructure.Repositories
                 context.SaveChanges();
             }
         }
+
+        public List<UserDataWithPackageData> GetOrdersByUserId(string userId)
+        {
+            var Orders = context.PaymentPackages.Where(c => c.Pending == Constant.StatusCompleted&&c.UserId==userId).ToList();
+             var OrdersMapped =  mapper.Map<List<UserDataWithPackageData>>(Orders);
+            return OrdersMapped;
+        }
     }
-
-
 }

@@ -8,6 +8,9 @@ import { CartItem } from 'src/app/shared/Models/CartItem';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/Auth/auth.service';
 import { CartItemService } from 'src/app/shared/Services/cart-item.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ReviewComponent } from '../review/review.component';
+import { ProductReviewComponent } from '../product-review/product-review.component';
 
 @Component({
   selector: 'app-product-details',
@@ -19,15 +22,17 @@ constructor(private shopService:ShopService,
   private Route:ActivatedRoute,private Toaster:ToastrService,
   private spinner: NgxSpinnerService,
   private AuthService:AuthService,
-  private CartItemService:CartItemService){
+  private CartItemService:CartItemService,
+  private MatDialog:MatDialog){
 
 }
+
 CartItem!:CartItem;
   ngOnInit(): void {
     this.spinner.show()
    this.LoadProduct()
-
   }
+
   LoadProduct(){
     const id=this.Route.snapshot.paramMap.get('id');
     if(id == null)
@@ -62,7 +67,30 @@ CartItem!:CartItem;
       }
     })
   }
+  OpenReviewComponent(){
+    const id=this.Route.snapshot.paramMap.get('id');
+ var DialogRef= this.MatDialog.open(ReviewComponent,{
+   width:"400px",
+   disableClose:true,
+   maxHeight:"500px",
+   data:id
+  })
+  DialogRef.afterClosed().subscribe(res=>{
+    if(res){
+      this.LoadProduct()
+    }
+  })
+  }
 
+  OpenReviewsForProduct(){
+    const id=this.Route.snapshot.paramMap.get('id');
+    this.MatDialog.open(ProductReviewComponent,{
+      width:"400px",
+      maxHeight:"500px",
+      data:id,
+      disableClose:true
+    })
+  }
   increesCartitemCount(inp:any){
 
     inp.textContent++;

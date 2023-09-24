@@ -23,6 +23,9 @@ namespace Api.AutoMapperProfile
             CreateMap<User, UserDto>();
             CreateMap<cartItem,cartItemDTO>().ReverseMap();
             CreateMap<cartItem, CartItemToAdd>().ReverseMap();
+            CreateMap<PaymentPackage, UserDataWithPackageData>().
+                ForMember(dest => dest.OrderStatus, opt => { opt.MapFrom(src => src.Pending); });
+
         }
     }
 }
