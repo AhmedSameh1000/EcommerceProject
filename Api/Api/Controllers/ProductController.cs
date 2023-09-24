@@ -6,13 +6,12 @@ using Core.Models;
 using InfraStructure.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
+
 
 namespace Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
     public class ProductController : ControllerBase
     {
         private readonly ProductRepository productRepository;
@@ -93,8 +92,9 @@ namespace Api.Controllers
             await productRepository.DeleteProductAsync(id);
             return Ok();
         }
-        [HttpGet("ProductsImages")]
-        
+
+    
+        [HttpGet("ProductsImages")]  
         public async Task<IActionResult> GetProductsImages()
         {
             var Images=await productRepository.GetImagesForSomeProducts();

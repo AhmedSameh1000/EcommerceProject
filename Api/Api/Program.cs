@@ -22,20 +22,43 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<AppDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Constr")).UseLazyLoadingProxies();
-});
 builder.Services.Configure<Jwt>(builder.Configuration.GetSection("JWT"));
+
 builder.Services.AddIdentity<User, IdentityRole>(opt =>
 {
     opt.Password.RequireDigit = false;
     opt.Password.RequireLowercase = false;
     opt.Password.RequireUppercase = false;
     opt.Password.RequiredLength = 5; // Set the desired password length here
-    opt.Password.RequireNonAlphanumeric = false; // Disable the requirement for special characters
+    opt.Password.RequireNonAlphanumeric = false;
 })
     .AddEntityFrameworkStores<AppDbContext>();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Constr")).UseLazyLoadingProxies();
+});
+
+
+
+
+
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<ProductRepository>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IProductRepository,ProductRepository>();
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
+builder.Services.AddScoped<IInitializer, Initializer>();
+builder.Services.AddScoped<IUserRepository,UserRepository>();
+builder.Services.AddScoped<ICartItemRepository,CartItemRepository>();
+builder.Services.AddScoped<IReviewRepository,ReviewRepository>();
+
+
+
+
+
+builder.Services.AddCors();
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -53,26 +76,15 @@ builder.Services.AddAuthentication(options =>
         ValidIssuer = builder.Configuration["JWT:Issuer"],
         ValidAudience = builder.Configuration["JWT:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"])),
+        ClockSkew = TimeSpan.Zero
     };
 });
 builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("Corspolicy", policy =>
-    {
-        policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
-    });
-});
-builder.Services.AddScoped<ProductRepository>();
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<IProductRepository,ProductRepository>();
-builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
-builder.Services.AddScoped<IAuthRepository, AuthRepository>();
-builder.Services.AddScoped<IInitializer, Initializer>();
-builder.Services.AddScoped<IUserRepository,UserRepository>();
-builder.Services.AddScoped<ICartItemRepository,CartItemRepository>();
-builder.Services.AddScoped<IReviewRepository,ReviewRepository>();
+
+
+
+
 var app = builder.Build();
 
 app.UseStaticFiles();
@@ -82,15 +94,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseStatusCodePagesWithReExecute("/Errors/{0}");
-app.UseHttpsRedirection();
-app.UseCors("Corspolicy");
-SeddData();
-app.UseAuthentication();
-app.UseAuthorization();
-app.UseMiddleware<ExceptionMiddleware>();
 
-app.MapControllers();
 using var Scope = app.Services.CreateScope();
 var services = Scope.ServiceProvider;
 var context=services.GetRequiredService<AppDbContext>();
@@ -105,6 +109,15 @@ catch (Exception ex)
 {
     logger.LogError("Error Migration During Process");
 }
+
+
+app.UseStatusCodePagesWithReExecute("/Errors/{0}");
+app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+app.UseHttpsRedirection();
+SeddData();
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
 app.Run();
 void SeddData()
 {
