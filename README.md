@@ -26,7 +26,7 @@ npm 9.6.7
 TypeScript Version 5.1.6
 just clone or download project and open package manger
 console then write update-database
-(you need to update connection string to your serve )
+(you need to update connection string to your server )
 
 ##Admin Data
 Email =>> Admin@gmail.com
