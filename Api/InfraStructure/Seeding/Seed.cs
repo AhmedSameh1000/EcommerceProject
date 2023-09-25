@@ -48,7 +48,7 @@ namespace InfraStructure.Seeding
                     FirstName = "Ahmed",
                     LastName = "Sameh",
                     Email="Admin@gmail.com",
-                    UserName= "Admin@gmail.com",
+                    UserName= "Admin",
                     City="Alexandria",
                     PhoneNumber="01092532838",
                 };

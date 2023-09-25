@@ -14,12 +14,12 @@ namespace Api.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly ProductRepository productRepository;
+        private readonly IProductRepository productRepository;
         private readonly IMapper mapper;
         private readonly IReviewRepository reviewRepository;
 
         public ProductController(
-            ProductRepository productRepository,
+            IProductRepository productRepository,
             IMapper mapper,
             IReviewRepository reviewRepository
             )
@@ -30,14 +30,14 @@ namespace Api.Controllers
             this.reviewRepository = reviewRepository;
         }
 
-
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpDelete("DeleteBrand/{id}")]
         public  Task DeleteBrand(int id)
         {
             productRepository.DeleteBrand(id);
             return Task.CompletedTask; 
         }
-            
+        [Authorize(Roles ="Admin,Moderator")]
         [HttpDelete("DeleteType/{id}")]
         public Task Deletetype(int id)
         {
@@ -47,6 +47,7 @@ namespace Api.Controllers
 
 
 
+        [Authorize(Roles = "Admin,Moderator")]
 
         [HttpPost("CreateBrand")]
         public async Task<IActionResult> CreateBrand(BrandOrTypeToCreate obj)
@@ -61,7 +62,9 @@ namespace Api.Controllers
 
             var Brand = await productRepository.CreateBrand(obj);
             return Ok(Brand);  
-        }   
+        }
+        [Authorize(Roles = "Admin,Moderator")]
+
         [HttpPost("CreateType")]
         public async Task<IActionResult> Createtype(BrandOrTypeToCreate obj)
         {
@@ -79,13 +82,14 @@ namespace Api.Controllers
         }
 
         [HttpGet("Products")]
-        
         public async Task<IActionResult> GetProducts([FromQuery] PaginationParams? param)
         {
             var ProductPagination = await productRepository.GetProductsAsync(param);
            
             return Ok(ProductPagination);
         }
+
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpDelete("DeleteProductAsync/{id}")]
         public async Task<IActionResult> DeleteProductAsync(int id)
         {
@@ -94,13 +98,13 @@ namespace Api.Controllers
         }
 
     
-        [HttpGet("ProductsImages")]  
+        [HttpGet("ProductsImages")]
         public async Task<IActionResult> GetProductsImages()
         {
             var Images=await productRepository.GetImagesForSomeProducts();
             return Ok(Images);
         }
-
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost("CreateProductAsync")]
         public async Task<IActionResult> CreateProduct([FromForm] ProductToCreateDTO productdto)
         {
@@ -109,7 +113,6 @@ namespace Api.Controllers
         }
 
         [HttpGet("{id}")]
-        
         public async Task<IActionResult> GetProduct(int id)
         {
             var ProductCartItem = await productRepository.GetProductByIdAsync(id);
@@ -117,20 +120,19 @@ namespace Api.Controllers
         }
 
         [HttpGet("Types")]
-        
+       
         public async Task<IActionResult> GetProductTypes()
         {
             return Ok(await productRepository.GetProductTypesAsync());
         }
-
         
         [HttpGet("Brands")]
+        
         public async Task<IActionResult> GetProductBrands()
         {
             return Ok(await productRepository.GetProductBrandsAsync());
         } 
         [HttpPost("AddReview")]
-        
 
         public IActionResult AddReview(Review review)
         {
@@ -138,8 +140,6 @@ namespace Api.Controllers
             return Ok();
         }
         [HttpGet("Reviews/{id}")]
-        
-
         public IActionResult GetReviews(int id)
         {
            var Reviews= reviewRepository.GetReviews(id);

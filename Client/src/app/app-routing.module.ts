@@ -17,12 +17,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-    canActivate:[isloginGuard]
+ 
   },
   {
     path: '',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-    canActivate:[authGuard]
+   
   },
   {
     path:'**',redirectTo:'',pathMatch:"full"

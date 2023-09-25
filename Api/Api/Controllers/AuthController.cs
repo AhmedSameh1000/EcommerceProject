@@ -1,23 +1,25 @@
-﻿using Api.DTOs;
+using Api.DTOs;
 using Core.DTOs;
 using Core.Interfaces;
 using Core.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
+
+
 namespace Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _AuthRepository;
+        private readonly UserManager<User> _userManager;
 
-        public AuthController(IAuthRepository IAuthRepository)
+        public AuthController(IAuthRepository IAuthRepository, UserManager<User> userManager)
         {
             _AuthRepository = IAuthRepository;
-
+            _userManager = userManager;
         }
 
         [HttpPost("Register")]
@@ -33,7 +35,7 @@ namespace Api.Controllers
         }
 
         [HttpPost("LogIn")]
-        public async Task<IActionResult> GetTokenAsync([FromBody] UserDtoModel model)
+        public async Task<IActionResult> GetTokenAsync([FromBody] UserViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -42,6 +44,13 @@ namespace Api.Controllers
 
             AuthModel result = await _AuthRepository.LogIn(model);
             return !result.isAuthenticated ? BadRequest(result.Message) : Ok(result);
+        }
+
+        [HttpGet("UserData/{id}")]
+        public async Task<IActionResult> GetUserData(string id)
+        {
+            User User = await _AuthRepository.GetUser(id);
+            return Ok(User);
         }
     }
 }

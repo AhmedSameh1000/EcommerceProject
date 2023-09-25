@@ -4,6 +4,7 @@ using Core.Interfaces;
 using Core.Models;
 using InfraStructure.Data;
 using InfraStructure.Seeding;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,7 @@ namespace Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CartItemController : ControllerBase
     {
         private readonly ICartItemRepository cartItemRepository;
@@ -31,13 +33,14 @@ namespace Api.Controllers
         }
 
         [HttpPost("SaveCartItem")]
+        [Authorize]
         public IActionResult SaveCartItem(CartItemToAdd cartItemDTO)
         {
            
              cartItemRepository.Add(cartItemDTO);
             return Ok(cartItemDTO);
         }
-
+        [Authorize(Roles ="Reciver,Admin,Moderator")]
         [HttpGet("StartProcessing/{userId}/{ReciverId}")]
         public IActionResult StartProcessing(string userId, string ReciverId)
         {
@@ -46,6 +49,7 @@ namespace Api.Controllers
         }
                
         [HttpGet("CompleteProcessing/{userId}/{ReciverId}")]
+        [Authorize(Roles = "Reciver,Admin,Moderator")]
         public IActionResult CompleteProcessing(string userId, string ReciverId)
         {
             cartItemRepository.CompleteTask(userId,ReciverId);
@@ -64,6 +68,7 @@ namespace Api.Controllers
 
 
         [HttpGet("GetCartItems/{id}")]
+        [Authorize]
         public async Task<IActionResult> GetCartItems(string id)
         {
 
@@ -82,6 +87,7 @@ namespace Api.Controllers
 
         }
         [HttpGet("GetUserPackegs/{id}")]
+        [Authorize(Roles = "Reciver,Admin,Moderator")]
         public IActionResult GetUserPackegs(string id)
         {
             var Packages=cartItemRepository.GetPaymentPackagesByUserId(id);
@@ -89,6 +95,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("userDataWithpackageData")]
+        [Authorize(Roles = "Reciver,Admin,Moderator")]
         public IActionResult PaymentPackages()
         {
             var Packges = cartItemRepository.userDataWithpackageData();
@@ -96,7 +103,7 @@ namespace Api.Controllers
         }
 
 
-
+        [Authorize]
         [HttpGet("SummaryGet/{userId}")]
         public IActionResult Summary(string userId)
         {
@@ -125,7 +132,7 @@ namespace Api.Controllers
             return Ok(cartDto);
         }
 
-
+        [Authorize]
         [HttpPost("SummaryPost/{userId}")]
         public IActionResult SummaryPost([FromBody]userData userData, string userId)
         {
@@ -212,6 +219,7 @@ namespace Api.Controllers
             return Ok(session);
         }
         [HttpGet("OrderConfirmation")]
+        [Authorize]
         public async Task<IActionResult> OrderConfirmation([FromQuery]int id)
         {
             var OrderHeader = cartItemRepository.GetOrderHeader(id);
@@ -254,26 +262,28 @@ namespace Api.Controllers
 
 
         [HttpGet("Increment/{id}")]
+        [Authorize]
+
         public IActionResult IncrementCartItem(int id)
         {
             cartItemRepository.IncrementCartItem(id);
             return Ok();
-        }   
+        }
+        [Authorize]
+
         [HttpGet("Decrement/{id}")]
         public IActionResult DecrementCartItem(int id)
         {
             cartItemRepository.DecrementCartItem(id);
             return Ok();
-        }    
+        }
+        [Authorize]
+
         [HttpDelete("Remove/{id}")]
         public IActionResult RemoveCartItem(int id)
         {
             cartItemRepository.RemoveCartItem(id);
             return Ok();
         }
-
-
-
-
     }
 }

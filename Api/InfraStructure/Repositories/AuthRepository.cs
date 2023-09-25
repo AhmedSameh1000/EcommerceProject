@@ -1,25 +1,21 @@
-﻿using Api.DTOs;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Api.DTOs;
 using Api.Helpers;
 using Core.DTOs;
 using Core.Interfaces;
 using Core.Models;
-using InfraStructure.Seeding;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace InfraStructure.Repositories
 {
-    public class AuthRepository:IAuthRepository
+    public class AuthRepository : IAuthRepository
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -45,11 +41,11 @@ namespace InfraStructure.Repositories
 
             IEnumerable<Claim> claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Sub, user.UserName ),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim("userName", user.FirstName+" "+user.LastName),
-                new Claim("uid", user.Id)
+                new Claim("uid", user.Id),
             }
             .Union(userClaims)
             .Union(roleClaims);
@@ -59,16 +55,24 @@ namespace InfraStructure.Repositories
             JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
                 issuer: _jwt.Issuer,
                 audience: _jwt.Audience,
-                claims: claims,           
-                signingCredentials: signingCredentials
-                );
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(_jwt.DurationInMinutes),
+                signingCredentials: signingCredentials);
 
             return jwtSecurityToken;
         }
 
-  
+        public async Task<User> GetUser(string Id)
+        {
+            User? User = await _userManager.FindByIdAsync(Id);
+            if (User is null)
+            {
+                return null;
+            }
+            return User;
+        }
 
-        public async Task<AuthModel> LogIn(UserDtoModel model)
+        public async Task<AuthModel> LogIn(UserViewModel model)
         {
             AuthModel authModel = new AuthModel();
 
@@ -99,10 +103,9 @@ namespace InfraStructure.Repositories
                 return new AuthModel { Message = "Email is Already Regitsered" };
             }
 
-
             User User = new User()
             {
-                UserName = model.Email,
+                UserName = model.Email.Split("@")[0],
                 Email = model.Email,
                 FirstName = model.FirstName,
                 LastName=model.LastName
@@ -119,7 +122,7 @@ namespace InfraStructure.Repositories
                 return new AuthModel { Message = Error };
             }
 
-            _ = await _userManager.AddToRoleAsync(User, InfraStructure.Seeding.Constant.User);
+            _ = await _userManager.AddToRoleAsync(User, "User");
             JwtSecurityToken Jwt = await CreateToken(User);
 
             AuthModel Model = new AuthModel
@@ -127,13 +130,12 @@ namespace InfraStructure.Repositories
                 Email = User.Email,
                 //ExpireOn = Jwt.ValidTo,
                 isAuthenticated = true,
-                Roles = new List<string> { InfraStructure.Seeding.Constant.User },
+                Roles = new List<string> { "User" },
                 Token = new JwtSecurityTokenHandler().WriteToken(Jwt),
                 UsreName = User.UserName,
-                Name = User.FirstName+" " +User.LastName,
+                Name = User.FirstName+" "+User.LastName
             };
             return Model;
         }
-
     }
 }

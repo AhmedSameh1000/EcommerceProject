@@ -92,7 +92,7 @@ namespace InfraStructure.Repositories
                 Users = Users.Where(p => p.Email.ToLower().Contains(@params.Search.ToLower()));
             }
 
-            var AllUsers = await Users.ToListAsync();
+            var AllUsers = await Users.Where(c=>c.Email!="Admin@gmail.com").ToListAsync();
 
             var UsersToReturn = AllUsers.Select(c=>new UserDto 
             { 

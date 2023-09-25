@@ -1,20 +1,19 @@
-using Core.Interfaces;
-using InfraStructure.Data;
-using Microsoft.EntityFrameworkCore;
-using InfraStructure.Repositories;
-using Api.AutoMapperProfile;
-using Api.MiddleWare;
-using Api.Helpers;
-using Core.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using InfraStructure.Seeding;
+using Api.AutoMapperProfile;
+using Api.Helpers;
 using API.Models;
+using Core.Interfaces;
+using Core.Models;
+using InfraStructure.Data;
+using InfraStructure.Repositories;
+using InfraStructure.Seeding;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Stripe;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
@@ -22,8 +21,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.Configure<Jwt>(builder.Configuration.GetSection("JWT"));
+builder.Services.AddCors();
 
+builder.Services.Configure<Jwt>(builder.Configuration.GetSection("JWT"));
 builder.Services.AddIdentity<User, IdentityRole>(opt =>
 {
     opt.Password.RequireDigit = false;
@@ -38,27 +38,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Constr")).UseLazyLoadingProxies();
 });
-
-
-
-
-
-builder.Services.AddScoped<IAuthRepository, AuthRepository>();
-builder.Services.AddScoped<ProductRepository>();
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<IProductRepository,ProductRepository>();
-builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
-builder.Services.AddScoped<IInitializer, Initializer>();
-builder.Services.AddScoped<IUserRepository,UserRepository>();
-builder.Services.AddScoped<ICartItemRepository,CartItemRepository>();
-builder.Services.AddScoped<IReviewRepository,ReviewRepository>();
-
-
-
-
-
-builder.Services.AddCors();
-
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -80,44 +59,32 @@ builder.Services.AddAuthentication(options =>
     };
 });
 builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
+builder.Services.AddScoped<IInitializer, Initializer>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICartItemRepository, CartItemRepository>();
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 
-
-
-
-
-var app = builder.Build();
-
-app.UseStaticFiles();
+WebApplication app = builder.Build();
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    _ = app.UseSwagger();
+    _ = app.UseSwaggerUI();
 }
-
-using var Scope = app.Services.CreateScope();
-var services = Scope.ServiceProvider;
-var context=services.GetRequiredService<AppDbContext>();
-var logger = services.GetRequiredService<ILogger<Program>>();
-StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
-
-try
-{
-    await context.Database.MigrateAsync();
-}
-catch (Exception ex)
-{
-    logger.LogError("Error Migration During Process");
-}
-
-
-app.UseStatusCodePagesWithReExecute("/Errors/{0}");
 app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseHttpsRedirection();
 SeddData();
+app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+
 app.Run();
 void SeddData()
 {
@@ -125,3 +92,18 @@ void SeddData()
     var Initalizer = scope.ServiceProvider.GetRequiredService<IInitializer>();
     Initalizer.Intialize().Wait();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

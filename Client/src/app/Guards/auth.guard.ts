@@ -4,5 +4,5 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth/Auth/auth.service';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  return inject(AuthService).IsLogIn()?false&&inject(Router).navigate(['/']):true
+  return inject(AuthService).isAdmin()||inject(AuthService).isModerator()?true&&inject(Router).navigate(['/']):false
 };
