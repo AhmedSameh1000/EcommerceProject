@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fm3rUONf/xSfHUxz8nP732q70U2CZXLxCp40iRcYd+M=",
+  "Hash": "wNkLoV+Rf+V7hYKkjOOQyh2GDHDCW7+T8hScD0FC0RA=",
   "Source": "Api",
   "BasePath": "_content/Api",
   "Mode": "Default",
@@ -10,22 +10,24 @@
     {
       "Name": "Api\\wwwroot",
       "Source": "Api",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Ahmed Sameh\\Desktop\\Ecomerce\\EcommerceProject\\Api\\Api\\wwwroot\\",
       "BasePath": "_content/Api",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\4e2e65bd-9fe6-436e-ad0d-c68837709ab4.jpg",
+      "Identity": "C:\\Users\\Ahmed Sameh\\Desktop\\Ecomerce\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\4e2e65bd-9fe6-436e-ad0d-c68837709ab4.jpg",
       "SourceId": "Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Ahmed Sameh\\Desktop\\Ecomerce\\EcommerceProject\\Api\\Api\\wwwroot\\",
       "BasePath": "_content/Api",
       "RelativePath": "Images/4e2e65bd-9fe6-436e-ad0d-c68837709ab4.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
@@ -34,15 +36,17 @@
       "OriginalItemSpec": "wwwroot\\Images\\4e2e65bd-9fe6-436e-ad0d-c68837709ab4.jpg"
     },
     {
-      "Identity": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\d8c5820b-12b9-40b7-b2a6-a54980f56be5.jpg",
+      "Identity": "C:\\Users\\Ahmed Sameh\\Desktop\\Ecomerce\\EcommerceProject\\Api\\Api\\wwwroot\\Images\\d8c5820b-12b9-40b7-b2a6-a54980f56be5.jpg",
       "SourceId": "Api",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Administrator\\Desktop\\LastAndList\\EcommerceProject\\Api\\Api\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Ahmed Sameh\\Desktop\\Ecomerce\\EcommerceProject\\Api\\Api\\wwwroot\\",
       "BasePath": "_content/Api",
       "RelativePath": "Images/d8c5820b-12b9-40b7-b2a6-a54980f56be5.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",

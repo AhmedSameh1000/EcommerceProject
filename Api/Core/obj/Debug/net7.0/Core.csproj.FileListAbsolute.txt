@@ -58,3 +58,16 @@ C:\Users\Administrator\Desktop\LastAndList\EcommerceProject\Api\Core\obj\Debug\n
 C:\Users\Administrator\Desktop\LastAndList\EcommerceProject\Api\Core\obj\Debug\net7.0\refint\Core.dll
 C:\Users\Administrator\Desktop\LastAndList\EcommerceProject\Api\Core\obj\Debug\net7.0\Core.pdb
 C:\Users\Administrator\Desktop\LastAndList\EcommerceProject\Api\Core\obj\Debug\net7.0\ref\Core.dll
+C:\Users\Ahmed Sameh\Desktop\Ecomerce\EcommerceProject\Api\Core\bin\Debug\net7.0\Core.deps.json
+C:\Users\Ahmed Sameh\Desktop\Ecomerce\EcommerceProject\Api\Core\bin\Debug\net7.0\Core.dll
+C:\Users\Ahmed Sameh\Desktop\Ecomerce\EcommerceProject\Api\Core\bin\Debug\net7.0\Core.pdb
+C:\Users\Ahmed Sameh\Desktop\Ecomerce\EcommerceProject\Api\Core\obj\Debug\net7.0\Core.csproj.AssemblyReference.cache
+C:\Users\Ahmed Sameh\Desktop\Ecomerce\EcommerceProject\Api\Core\obj\Debug\net7.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ahmed Sameh\Desktop\Ecomerce\EcommerceProject\Api\Core\obj\Debug\net7.0\Core.AssemblyInfoInputs.cache
+C:\Users\Ahmed Sameh\Desktop\Ecomerce\EcommerceProject\Api\Core\obj\Debug\net7.0\Core.AssemblyInfo.cs
+C:\Users\Ahmed Sameh\Desktop\Ecomerce\EcommerceProject\Api\Core\obj\Debug\net7.0\Core.csproj.CoreCompileInputs.cache
+C:\Users\Ahmed Sameh\Desktop\Ecomerce\EcommerceProject\Api\Core\obj\Debug\net7.0\Core.sourcelink.json
+C:\Users\Ahmed Sameh\Desktop\Ecomerce\EcommerceProject\Api\Core\obj\Debug\net7.0\Core.dll
+C:\Users\Ahmed Sameh\Desktop\Ecomerce\EcommerceProject\Api\Core\obj\Debug\net7.0\refint\Core.dll
+C:\Users\Ahmed Sameh\Desktop\Ecomerce\EcommerceProject\Api\Core\obj\Debug\net7.0\Core.pdb
+C:\Users\Ahmed Sameh\Desktop\Ecomerce\EcommerceProject\Api\Core\obj\Debug\net7.0\ref\Core.dll
